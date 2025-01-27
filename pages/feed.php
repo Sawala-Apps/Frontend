@@ -36,19 +36,23 @@ $posts = [
     <title>Feed Page</title>
     <link rel="stylesheet" href="../assets/css/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Mega:wght@100..900&display=swap" rel="stylesheet">
 </head>
-<body class="bg-[#FFF3E0] font-sans items-center flex flex-col">
-    <div class="w-[100vh] flex flex-col items-center">
+<body class="bg-white bg-[linear-gradient(to_right,#80808033_1px,transparent_1px),linear-gradient(to_bottom,#80808033_1px,transparent_1px)] bg-[size:70px_70px] font-sans items-center flex flex-col">
+    <div class="w-[120vh] flex flex-col items-center">
     <?php include '../includes/header.php'; ?>
-    <main class="container mx-auto max-w-2xl">
+    <main class="container mx-auto">
         <?php
+        include '../partials/create-feed.php';
         foreach ($posts as $post) {
             include '../partials/feed-card.php';
         }
         ?>
     </main>
-
-
     </div>
+    <script>
+    </script>
 </body>
 </html>
