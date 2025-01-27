@@ -1,7 +1,7 @@
 <?php
 
 ?>
-<div class="w-[80%] mx-auto mt-10 p-6 bg-[#DFE5F2] border-brutal shadow-brutal rounded-lg mb-10">
+<div class="w-[80%] mx-auto mb-6 p-6 bg-[#DFE5F2] border-brutal shadow-brutal rounded-lg ">
 
     <div class="flex items-center justify-between">
         <div class="flex items-center space-x-4">

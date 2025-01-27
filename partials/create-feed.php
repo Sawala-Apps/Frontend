@@ -1,4 +1,4 @@
-<div class="w-[80%] mx-auto mt-10 p-6 bg-[#DFE5F2] border-brutal shadow-brutal rounded-lg">
+<div class="w-[80%] mx-auto mb-6 p-6 bg-[#DFE5F2] border-brutal shadow-brutal rounded-lg">
     <form id="postForm">
         <div class="mb-4">
             <label for="caption" class="block text-gray-800 font-bold mb-2">Caption:</label>
