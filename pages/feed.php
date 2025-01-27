@@ -6,7 +6,7 @@ $posts = [
         'content' => 'Jiji bos',
         'author' => 'Author 1',
         'date' => '2025-01-01 12:00:00',
-        'image_url' => 'https://www.catster.com/wp-content/uploads/2023/11/Beluga-Cat-e1714190563227.webp',
+        'image_url' => 'https://i.pinimg.com/236x/70/51/16/70511629af7f37b7637ac0390dbb3207.jpg',
         'pfp_url' => 'https://tr.rbxcdn.com/180DAY-a33f65cf6a7233cad8f393ec0350e538/420/420/Hat/Webp/noFilter'
     ],
     [
@@ -22,7 +22,7 @@ $posts = [
         'content' => 'Tiga bos',
         'author' => 'Author 3',
         'date' => '2025-01-03 14:00:00',
-        'image_url' => 'https://i.pinimg.com/236x/70/51/16/70511629af7f37b7637ac0390dbb3207.jpg',
+        'image_url' => 'https://www.catster.com/wp-content/uploads/2023/11/Beluga-Cat-e1714190563227.webp',
         'pfp_url' => 'https://i.pinimg.com/736x/de/a1/b2/dea1b26ed44c0a717205aa117d0bf44f.jpg'
     ]
 ];
