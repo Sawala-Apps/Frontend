@@ -1,8 +1,8 @@
 <?php
-// post_card.php
+
 ?>
 <div class="w-[70vh] mx-auto mt-10 p-6 bg-[#FD9745] border-brutal shadow-brutal rounded-lg mb-10">
-    <!-- Header: Username and Date -->
+
     <div class="flex items-center justify-between">
         <div class="flex items-center space-x-4">
             <img src="<?php echo htmlspecialchars($post['pfp_url']); ?>" alt="User Avatar" class="w-10 h-10 rounded-full border-brutal shadow-brutal">
@@ -13,19 +13,17 @@
         </div>
     </div>
 
-    <!-- Post Body -->
     <div class="mt-4">
         <p class="text-gray-800 text-lg">
           <?php echo nl2br(htmlspecialchars($post['content'])); ?>
         </p>
     </div>
 
-    <!-- Post Image -->
     <div class="mt-4">
         <img src="<?php echo htmlspecialchars($post['image_url']); ?>" alt="Post Image" class="w-[62vh] h-[40vh] border-brutal shadow-brutal rounded-lg">
     </div>
 
-    <!-- Action Buttons -->
+
     <div class="flex flex-row items-center justify-between mt-6">
         <button class="flex items-center space-x-2 px-4 py-2 bg-stone-100 text-black font-bold rounded-lg shadow-brutal hover:bg-blue-600">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hand-thumbs-up" viewBox="0 0 16 16">
@@ -49,5 +47,4 @@
     </div>
 </div>
 <?php
-// End of post_card.php
 ?>

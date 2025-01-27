@@ -1,5 +1,5 @@
 <?php
-// Static data to simulate posts with image URLs
+// static dulss
 $posts = [
     [
         'id' => 1,
@@ -39,13 +39,9 @@ $posts = [
 </head>
 <body class="bg-[#FFF3E0] font-sans items-center flex flex-col">
     <div class="w-[100vh] flex flex-col items-center">
-        <!-- Header -->
     <?php include '../includes/header.php'; ?>
-
-    <!-- Feed Container -->
     <main class="container mx-auto max-w-2xl">
         <?php
-        // Loop through posts and pass each post to the feed card template
         foreach ($posts as $post) {
             include '../partials/feed-card.php';
         }
