@@ -1,0 +1,7 @@
+.shadow-brutal {
+	box-shadow: 8px 8px 0 0 rgba(0, 0, 0, 1);
+}
+.border-brutal {
+	border-width: 4px;
+	border-color: black;
+}
