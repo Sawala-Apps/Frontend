@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feed Page</title>
     <link rel="stylesheet" href="../assets/css/style.css">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Mega:wght@100..900&display=swap" rel="stylesheet">
@@ -26,7 +26,7 @@
                         </button>
                     </div>
                 </div>
-                <div class="grid grid-cols-3 gap-4">
+                <div class="grid grid-cols-3 gap-4 bg-white p-4 rounded-xl border-brutal">
                     <div class="relative group">
                         <div class="w-full h-32 overflow-hidden rounded-lg border-brutal shadow-brutal">
                             <img src="https://stickercommunity.com/uploads/main/25-08-2023-09-24-59b9adi-sticker6.webp" alt="Post Image" class="w-full h-full object-cover">
