@@ -14,7 +14,7 @@
 <div class="w-[62%] flex flex-col items-center">
     <main class="container mx-auto flex flex-col items-center">
     <?php include '../includes/header.php'; ?>
-    <div class="flex flex-col space-y-4 w-[80%] border-brutal shadow-brutal rounded-lg p-4 bg-[#DFE5F2]">
+    <div class="flex flex-col space-y-4 w-[80%] max-lg:w-[100%] border-brutal shadow-brutal rounded-lg p-4 bg-[#DFE5F2]">
         <div class="bg-white p-4 border-brutal shadow-brutal rounded-lg">
             <div class="flex justify-between items-center mb-2">
                 <span class="text-gray-800 font-semibold">User1</span>
@@ -31,14 +31,23 @@
         </div>
 
         <form id="chatForm" class="mt-4">
-            <div class="flex flex-row space-x-4">
-                <textarea id="message" name="message" class="w-full p-3 border-brutal rounded-lg shadow-brutal focus:ring-2 focus:ring-blue-400 focus:outline-none resize-none" placeholder="Type your message..." rows="2" required></textarea>
-                <button type="submit" class="px-6 py-2 bg-blue-500 text-black font-bold rounded-lg shadow-brutal hover:bg-blue-600 border-brutal">Send</button>
+            <div class="flex flex-row space-x-4 max-sm:flex-col mb-2">
+                <input id="message" name="message" class="w-full p-3 border-brutal rounded-lg shadow-brutal focus:ring-2 focus:ring-blue-400 focus:outline-none resize-none" placeholder="Type your message..." rows="2" required></input>
+                <button type="submit" class="btn-brutal px-6 py-2 bg-[#88AAEE] text-black font-bold rounded-lg shadow-brutal hover:bg-blue-600 border-brutal max-sm:mt-3">Send</button>
             </div>
         </form>
     </div>
     </main>
     </div>
+        
+    <script>
+        document.getElementById("chatForm").addEventListener("submit", function(event) {
+            event.preventDefault()
+            const message = document.getElementById("message").value;
+
+            console.log('post yh' + message)
+        });
+    </script>
     
 </body>
 </html>

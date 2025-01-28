@@ -14,7 +14,7 @@
     <div class="w-[62%] flex flex-col items-center">
         <main class="container mx-auto flex flex-col items-center">
             <?php include '../includes/header.php'; ?>
-            <div class="flex flex-col space-y-4 w-[80%] border-brutal shadow-brutal rounded-lg p-4 bg-[#DFE5F2]">
+            <div class="flex flex-col space-y-4 w-[80%] max-lg:w-[100%] border-brutal shadow-brutal rounded-lg p-4 bg-[#DFE5F2]">
                 <div class="flex items-center space-x-6 mb-8">
                     <div class="w-24 h-24 rounded-full overflow-hidden border-4 border-brutal shadow-brutal">
                         <img src="https://media.tenor.com/VGVjPI0mDS4AAAAe/hanni.png" alt="Profile Picture" class="w-full h-full object-cover">
@@ -26,27 +26,29 @@
                         </button>
                     </div>
                 </div>
-                <div class="grid grid-cols-3 gap-4 bg-white p-4 rounded-xl border-brutal">
+
+                <!-- jang gambar bos -->
+                <div class="grid grid-cols-3 gap-4 p-4">
                     <div class="relative group">
-                        <div class="w-full h-32 overflow-hidden rounded-lg border-brutal shadow-brutal">
-                            <img src="https://stickercommunity.com/uploads/main/25-08-2023-09-24-59b9adi-sticker6.webp" alt="Post Image" class="w-full h-full object-cover">
+                        <div class="w-full h-32 overflow-hidden rounded-lg border-brutal">
+                            <img src="https://stickercommunity.com/uploads/main/25-08-2023-09-24-59b9adi-sticker6.webp" alt="Post Image" class="w-full h-full object-cover hover:cursor-pointer">
                         </div>
                         <a href="/post-detail/1" class="absolute inset-0"></a>
                     </div>
                     <div class="relative group">
-                        <div class="w-full h-32 overflow-hidden rounded-lg border-brutal shadow-brutal">
+                        <div class="w-full h-32 overflow-hidden rounded-lg border-brutal">
                             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRv1cq2y70vyI2xVR29IjVThcT4qRxQoVixmw&s" alt="Post Image" class="w-full h-full object-cover">
                         </div>
                         <a href="/post-detail/1" class="absolute inset-0"></a>
                     </div>
                     <div class="relative group">
-                        <div class="w-full h-32 overflow-hidden rounded-lg border-brutal shadow-brutal">
+                        <div class="w-full h-32 overflow-hidden rounded-lg border-brutal">
                             <img src="https://i.ytimg.com/vi/BPfLMccFhLk/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCZG-buioKCNuzqv5uya1ivqtv82A" alt="Post Image" class="w-full h-full object-cover">
                         </div>
                         <a href="/post-detail/1" class="absolute inset-0"></a>
                     </div>
                     <div class="relative group">
-                        <div class="w-full h-32 overflow-hidden rounded-lg border-brutal shadow-brutal">
+                        <div class="w-full h-32 overflow-hidden rounded-lg border-brutal">
                             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBaJ07gNAlhkbj0yd0oTZywicRTZv_6odKRA&s" alt="Post Image" class="w-full h-full object-cover">
                         </div>
                         <a href="/post-detail/1" class="absolute inset-0"></a>
