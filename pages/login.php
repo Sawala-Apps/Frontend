@@ -30,7 +30,7 @@
                             <button type="submit" class="btn-brutal px-6 py-2 bg-[#88AAEE] text-black font-bold rounded-lg shadow-brutal hover:bg-blue-600 border-brutal">Login</button>
                         </div>
                     </form>
-                    <p class="text-center mt-4 text-sm text-gray-500">Don't have an account? <a href="signup.php" class="text-blue-500 hover:underline">Sign up</a></p>
+                    <p class="text-center mt-4 text-sm text-gray-500">Don't have an account? <a href="register.php" class="text-blue-500 hover:underline">Sign up</a></p>
                 </div>
             </div>
         </main>
