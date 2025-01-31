@@ -91,5 +91,54 @@
       </div>
     </div>
   </section>
+  <!-- Services Section -->
+<section id="services" class="py-12 px-6 bg-[#FFF3E0]">
+  <div class="text-center mb-12">
+    <h2 class="text-4xl font-bold text-gray-900 mb-4">Layanan Kami</h2>
+    <p class="text-lg text-gray-700">Sawala menyediakan berbagai layanan untuk memastikan pengalaman diskusi yang nyaman dan produktif.</p>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="bg-[#E0F7FA] shadow-md rounded-xl p-6 text-center">
+      <i class="fas fa-users text-4xl text-blue-500 mb-4"></i>
+      <h3 class="text-2xl font-semibold text-gray-900 mb-2">Komunitas Aktif</h3>
+      <p class="text-gray-700">Bergabunglah dalam komunitas yang aktif untuk berbagi ide dan pengalaman.</p>
+    </div>
+    <div class="bg-[#FFECB3] shadow-md rounded-xl p-6 text-center">
+      <i class="fas fa-comments text-4xl text-yellow-500 mb-4"></i>
+      <h3 class="text-2xl font-semibold text-gray-900 mb-2">Diskusi Live</h3>
+      <p class="text-gray-700">Nikmati pengalaman diskusi langsung dengan anggota komunitas lainnya.</p>
+    </div>
+    <div class="bg-[#F8BBD0] shadow-md rounded-xl p-6 text-center">
+      <i class="fas fa-shield-alt text-4xl text-red-500 mb-4"></i>
+      <h3 class="text-2xl font-semibold text-gray-900 mb-2">Keamanan Data</h3>
+      <p class="text-gray-700">Data dan privasi pengguna kami lindungi dengan standar keamanan tinggi.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-12 px-6 bg-[#1A1A1A] text-white">
+  <div class="text-center mb-12">
+    <h2 class="text-4xl font-bold mb-4">Hubungi Kami</h2>
+    <p class="text-lg text-gray-300">Kami siap membantu! Jangan ragu untuk menghubungi kami jika ada pertanyaan.</p>
+  </div>
+  <div class="flex flex-col md:flex-row justify-around items-center">
+    <div class="text-center mb-6 md:mb-0">
+      <i class="fas fa-envelope text-4xl text-yellow-400 mb-4"></i>
+      <h3 class="text-2xl font-semibold mb-2">Email</h3>
+      <p class="text-gray-400">support@sawala.com</p>
+    </div>
+    <div class="text-center mb-6 md:mb-0">
+      <i class="fas fa-phone text-4xl text-green-400 mb-4"></i>
+      <h3 class="text-2xl font-semibold mb-2">Telepon</h3>
+      <p class="text-gray-400">+62 812-3456-7890</p>
+    </div>
+    <div class="text-center">
+      <i class="fas fa-map-marker-alt text-4xl text-red-400 mb-4"></i>
+      <h3 class="text-2xl font-semibold mb-2">Alamat</h3>
+      <p class="text-gray-400">Jl. Sawala No. 10, Jakarta</p>
+    </div>
+  </div>
+</section>
 </body>
 </html>
