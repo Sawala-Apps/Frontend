@@ -15,8 +15,8 @@
     <nav class="hidden sm:flex space-x-4 text-gray-800 font-semibold">
       <a href="#" class="border-2 border-gray-800 rounded-full px-3 py-1 hover:bg-violet">Home</a>
       <a href="#features" class="border-2 border-transparent rounded-full px-3 py-1 hover:font-bold">Features</a>
-      <a href="#" class="border-2 border-transparent rounded-full px-3 py-1 hover:font-bold">Services</a>
-      <a href="#" class="border-2 border-transparent rounded-full px-3 py-1 hover:font-bold">Contact</a>
+      <a href="#services" class="border-2 border-transparent rounded-full px-3 py-1 hover:font-bold">Services</a>
+      <a href="#contact" class="border-2 border-transparent rounded-full px-3 py-1 hover:font-bold">Contact</a>
     </nav>
     <a href="pages/feed.php" class="px-4 py-2 mt-4 sm:mt-0 bg-[#1A1A1A] text-[#FFFFFF] rounded-xl font-bold hover:bg-[#333333]">
       Login here
