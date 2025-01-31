@@ -13,7 +13,7 @@
   <header class="flex flex-wrap justify-between items-center p-6 bg-[#FFF3E0] sticky top-0 z-50">
     <div class="text-3xl font-bold text-[#1A1A1A]">Sawala</div>
     <nav class="hidden sm:flex space-x-4 text-gray-800 font-semibold">
-      <a href="#" class="border-2 border-gray-800 rounded-full px-3 py-1 hover:font-bold">Home</a>
+      <a href="#" class="border-2 border-gray-800 rounded-full px-3 py-1 hover:bg-violet">Home</a>
       <a href="#features" class="border-2 border-transparent rounded-full px-3 py-1 hover:font-bold">Features</a>
       <a href="#" class="border-2 border-transparent rounded-full px-3 py-1 hover:font-bold">Services</a>
       <a href="#" class="border-2 border-transparent rounded-full px-3 py-1 hover:font-bold">Contact</a>
