@@ -5,12 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sawala - Ruang Diskusi</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Mega:wght@100..900&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
   <link rel="stylesheet" href="assets/css/style.css"> <!-- Tetap gunakan file CSS kamu -->
 </head>
-<body class="bg-[#FFF3E0] text-[#1A1A1A] font-sans">
+<body class="bg-[#DFE5F2] text-[#1A1A1A] font-sans">
   <!-- Header -->
-  <header class="flex flex-wrap justify-between items-center p-6 bg-[#FFF3E0] sticky top-0 z-50">
+  <header class="flex flex-wrap justify-between items-center p-6 bg-[#DFE5F2] sticky top-0 z-50">
     <div class="text-3xl font-bold text-[#1A1A1A]">Sawala</div>
     <nav class="hidden sm:flex space-x-4 text-gray-800 font-semibold">
       <a href="#" class="border-2 border-gray-800 rounded-full px-3 py-1 hover:bg-violet">Home</a>
@@ -18,18 +21,18 @@
       <a href="#services" class="border-2 border-transparent rounded-full px-3 py-1 hover:font-bold">Services</a>
       <a href="#contact" class="border-2 border-transparent rounded-full px-3 py-1 hover:font-bold">Contact</a>
     </nav>
-    <a href="pages/feed.php" class="px-4 py-2 mt-4 sm:mt-0 bg-[#1A1A1A] text-[#FFFFFF] rounded-xl font-bold hover:bg-[#333333]">
+    <a href="pages/login.php" class="px-4 py-2 mt-4 sm:mt-0 bg-[#1A1A1A] text-[#FFFFFF] rounded-xl font-bold hover:bg-[#333333]">
       Login here
     </a>
   </header>
 
   <!-- Main Content -->
-  <main class="flex flex-col-reverse lg:flex-row items-center justify-around mt-12 px-6 py-12 space-y-10 lg:space-y-0 lg:space-x-10">
+  <main class="flex flex-col-reverse lg:flex-row items-center justify-around px-6 py-12 space-y-10 lg:space-y-0 lg:space-x-10">
     <!-- Left Section -->
     <div class="max-w-lg text-center lg:text-left">
-      <h1 class="text-4xl lg:text-6xl font-extrabold text-gray-900 mb-6">
-        Sawala: Platform<br> untuk Diskusi<br> dan Kolaborasi
-      </h1>
+      <h2 class="text-4xl lg:text-6xl font-extrabold text-gray-900 mb-6">
+        Platform untuk Diskusi dan Kolaborasi
+      </h2>
       <p class="text-gray-800 text-base lg:text-lg">
         Sawala membuka ruang untuk berpendapat, berdiskusi, dan berkolaborasi dalam komunitas yang inklusif.
       </p>
@@ -92,23 +95,23 @@
     </div>
   </section>
   <!-- Services Section -->
-<section id="services" class="py-12 px-6 bg-[#FFF3E0]">
+<section id="services" class="py-12 px-6 bg-[#DFE5F2]">
   <div class="text-center mb-12">
     <h2 class="text-4xl font-bold text-gray-900 mb-4">Layanan Kami</h2>
     <p class="text-lg text-gray-700">Sawala menyediakan berbagai layanan untuk memastikan pengalaman diskusi yang nyaman dan produktif.</p>
   </div>
   <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-    <div class="bg-[#E0F7FA] shadow-md rounded-xl p-6 text-center">
+    <div class="bg-[#E0F7FA] shadow-join border-brutal rounded-xl p-6 text-center">
       <i class="fas fa-users text-4xl text-blue-500 mb-4"></i>
       <h3 class="text-2xl font-semibold text-gray-900 mb-2">Komunitas Aktif</h3>
       <p class="text-gray-700">Bergabunglah dalam komunitas yang aktif untuk berbagi ide dan pengalaman.</p>
     </div>
-    <div class="bg-[#FFECB3] shadow-md rounded-xl p-6 text-center">
+    <div class="bg-[#FFECB3] shadow-join border-brutal rounded-xl p-6 text-center">
       <i class="fas fa-comments text-4xl text-yellow-500 mb-4"></i>
       <h3 class="text-2xl font-semibold text-gray-900 mb-2">Diskusi Live</h3>
       <p class="text-gray-700">Nikmati pengalaman diskusi langsung dengan anggota komunitas lainnya.</p>
     </div>
-    <div class="bg-[#F8BBD0] shadow-md rounded-xl p-6 text-center">
+    <div class="bg-[#F8BBD0] shadow-join border-brutal rounded-xl p-6 text-center">
       <i class="fas fa-shield-alt text-4xl text-red-500 mb-4"></i>
       <h3 class="text-2xl font-semibold text-gray-900 mb-2">Keamanan Data</h3>
       <p class="text-gray-700">Data dan privasi pengguna kami lindungi dengan standar keamanan tinggi.</p>
