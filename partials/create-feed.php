@@ -19,7 +19,31 @@
         event.preventDefault()
         const caption = document.getElementById("caption").value;
         const image = document.getElementById("image").files[0];
+        const token = localStorage.getItem("token");
 
-        console.log('post yh' + caption)
+       const formData = new FormData();
+       formData.append("contentText", caption);
+       if (image) {
+        formData.append("mediaFiles", image);
+       }
+
+       axios.post("https://backend-production-c986.up.railway.app/feeds", formData, {
+        headers: {
+            "Authorization": `Bearer ${token}`,
+            "Content-Type": "multipart/form-data"
+        }
+       })
+       .then(function (response) {
+        alert("postingan berhasil dibuat!");
+        console.log(response.data);
+       })
+       .catch(function (error) {
+        alert("Gagal membuat postingan");
+        console.error(error);
+       })
+       .finally(function () {
+        document.getElementById("caption").value = ""; 
+            document.getElementById("image").value = null;
+       })
     });
 </script>

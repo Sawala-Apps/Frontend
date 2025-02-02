@@ -8,9 +8,28 @@
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Mega:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        #loadingOverlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            color: #000;
+        }
+    </style>
 </head>
 <body class="bg-white bg-[linear-gradient(to_right,#80808033_1px,transparent_1px),linear-gradient(to_bottom,#80808033_1px,transparent_1px)] bg-[size:70px_70px] font-sans items-center flex flex-col">
+    <div id="loadingOverlay" style="display: none;">Loading...</div>
     <div class="w-screen h-screen flex justify-center items-center">
         <div class="w-[62%] flex flex-col items-center">
             <main class="container mx-auto flex flex-col items-center">
@@ -24,6 +43,10 @@
                                     <input type="text" id="username" name="username" class="bg-white w-full p-3 border-brutal rounded-lg shadow-brutal focus:ring-2 focus:ring-blue-400 focus:outline-none" placeholder="Enter your username" required>
                                 </div>
                                 <div>
+                                    <label for="fullname" class="text-gray-700 font-semibold">Full name</label>
+                                    <input type="text" id="fullname" name="fullname" class="bg-white w-full p-3 border-brutal rounded-lg shadow-brutal focus:ring-2 focus:ring-blue-400 focus:outline-none" placeholder="Enter your Full name" required>
+                                </div>
+                                <div>
                                     <label for="email" class="text-gray-700 font-semibold">Email</label>
                                     <input type="email" id="email" name="email" class="bg-white w-full p-3 border-brutal rounded-lg shadow-brutal focus:ring-2 focus:ring-blue-400 focus:outline-none" placeholder="Enter your email" required>
                                 </div>
@@ -34,10 +57,6 @@
                                 <div>
                                     <label for="confirmPassword" class="text-gray-700 font-semibold">Confirm Password</label>
                                     <input type="password" id="confirmPassword" name="confirmPassword" class="bg-white w-full p-3 border-brutal rounded-lg shadow-brutal focus:ring-2 focus:ring-blue-400 focus:outline-none" placeholder="Enter again your password" required>
-                                </div>
-                                <div>
-                                    <label for="profilePhoto" class="text-gray-700 font-semibold">Profile Picture</label>
-                                    <input type="file" id="profilePhoto" name="profilePhoto" class="bg-white w-full p-3 border-brutal rounded-full shadow-brutal focus:ring-2 focus:ring-blue-400 focus:outline-none" accept="image/*" required>
                                 </div>
                                 <button type="submit" class="btn-brutal px-6 py-2 bg-[#88AAEE] text-black font-bold rounded-lg shadow-brutal hover:bg-blue-600 border-brutal">Register</button>
                             </div>
@@ -53,15 +72,39 @@
         document.getElementById("registerForm").addEventListener("submit", function(event) {
             event.preventDefault();
 
-            const username = document.getElementById("username").value;
+            const uid = document.getElementById("username").value;
+            const fullname = document.getElementById("fullname").value;
             const email = document.getElementById("email").value;
             const password = document.getElementById("password").value;
-            const profilePhoto = document.getElementById("profilePhoto").files[0];
+            const confirmPassword = document.getElementById("confirmPassword").value;
 
-            console.log('Username:', namusernamee);
-            console.log('Email:', email);
-            console.log('Password:', password);
-            console.log('Profile Photo:', profilePhoto);
+            if (password !== confirmPassword) {
+                alert("Password tidak sama!");
+                return;
+            }
+
+            // Tampilkan loading
+            document.getElementById("loadingOverlay").style.display = "flex";
+
+            axios.post("https://backend-production-c986.up.railway.app/auth/register", {
+                uid: uid,
+                email: email,
+                password: password,
+                fullname: fullname
+            })
+            .then(function (response) {
+                alert("Register berhasil!");
+                console.log(response.data);
+                window.location.href = "login.php";
+            })
+            .catch(function (error) {
+                alert("Gagal mendaftar");
+                console.error(error);
+            })
+            .finally(function () {
+                // Sembunyikan loading
+                document.getElementById("loadingOverlay").style.display = "none";
+            });
         });
     </script>
 </body>
