@@ -58,7 +58,7 @@
                     <h3 class="font-bold text-gray-900">${post.fullname}</h3>
                     <p class="ml-2 text-sm">@${post.uid}</p>
                     </div>
-                    <p class="text-sm text-gray-600">${post.created_at}</p>
+                    <p class="text-sm text-gray-600">${new Date(post.created_at).toLocaleString()}</p>
                 </div>
             </div>
         </div>
