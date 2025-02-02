@@ -1,46 +1,36 @@
 <?php
-// static dulss
-$posts = [
-    [
-        'postId' => 'post1',
-        'uid' => 'user1',
-        'content_text' => 'Hello, this is my first post!',
-        'content_image' => 'https://i.ytimg.com/vi/rvX8cS-v2XM/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCF0zNNCUpNmTYhJxWG7VWjmvmybA',
-        'created_at' => '2025-02-02 10:30:00',
-        'fullname' => 'tes',
-        'profile_picture' => 'https://i.redd.it/i-keep-seeing-this-angry-cat-meme-does-anyone-know-what-v0-0o96ygkg9jw91.jpg?width=1080&format=pjpg&auto=webp&s=8a7220f58ae5e5ecbef518367d48b96f7327e06d',
-        'like_count' => 12,
-        'view_count' => 250,
-        'comment_count' => 5,
-        'is_liked' => 1
-    ],
-    [
-        'postId' => 'post2',
-        'uid' => 'user2',
-        'content_text' => 'tes',
-        'content_image' => 'tes',
-        'created_at' => '2025-02-01 15:45:00',
-        'fullname' => 'tes',
-        'profile_picture' => 'https://cdn.pfps.gg/pfps/2763-cat-face-meme.png',
-        'like_count' => 30,
-        'view_count' => 400,
-        'comment_count' => 10,
-        'is_liked' => 0
-    ],
-    [
-        'postId' => 'post3',
-        'uid' => 'user3',
-        'content_text' => 'tes',
-        'content_image' => 'https://via.placeholder.com/300',
-        'created_at' => '2025-01-30 08:15:00',
-        'fullname' => 'testes',
-        'profile_picture' => 'https://i.pinimg.com/736x/de/a1/b2/dea1b26ed44c0a717205aa117d0bf44f.jpg',
-        'like_count' => 8,
-        'view_count' => 150,
-        'comment_count' => 2,
-        'is_liked' => 1
-    ]
-];
+
+// ganti token biar ga hardcode
+$token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJuYWRpbiIsImVtYWlsIjoibmFkaW5AZ21haWwuY29tIiwiaWF0IjoxNzM4NTA2MzUzLCJleHAiOjE3Mzg1NDIzNTN9.GkZrb0F7vv7UQVdITtnXBbsmq4V4g5bWgrxZMbtZvr8';
+
+$apiUrl = "https://backend-production-c986.up.railway.app/feeds";
+
+// Menggunakan cURL untuk request API
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $apiUrl);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, [
+    "Authorization: Bearer $token",
+    "Content-Type: multipart/form-data"
+]);
+
+$response = curl_exec($ch);
+if (curl_errno($ch)) {
+    echo 'Error:' . curl_error($ch);
+    exit;
+}
+curl_close($ch);
+
+// Decode JSON response
+$data = json_decode($response, true);
+
+// Memeriksa apakah data 'feeds' ada dan tidak kosong
+if (isset($data['feeds']) && is_array($data['feeds'])) {
+    $posts = $data['feeds'];
+} else {
+    $posts = [];
+    echo "No posts available or invalid data structure.";
+}
 ?>
 
 <!DOCTYPE html>
@@ -53,6 +43,7 @@ $posts = [
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Mega:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body class="bg-white bg-[linear-gradient(to_right,#80808033_1px,transparent_1px),linear-gradient(to_bottom,#80808033_1px,transparent_1px)] bg-[size:70px_70px] font-sans items-center flex flex-col">
@@ -61,13 +52,46 @@ $posts = [
     <?php include '../includes/header.php'; ?>
         <?php
         include '../partials/create-feed.php';
-        foreach ($posts as $post) {
-            include '../partials/feed-card.php';
-        }
+            foreach ($posts as $post) {
+                include '../partials/feed-card.php';
+            }
         ?>
     </main>
     </div>
     <script>
-    </script>
+    // const token = localStorage.getItem("token");
+    // axios.get("https://backend-production-c986.up.railway.app/feeds", {
+    //     headers: {
+    //         "Authorization": `Bearer ${token}`,
+    //         "Content-Type": "multipart/form-data"
+    //     }
+    // })
+    // .then(function (response) {
+    //     alert("Berhasil mendapatkan postingan");
+    //     console.log(response.data);
+    //     // looping pake js harus buat ulang ui disini
+    // })
+    // .catch(function (error) {
+    //     alert("Gagal mendapatkan postingan");
+    //     console.error(error);
+    // });
+
+    const token = localStorage.getItem('token'); 
+    console.log(token)
+
+    axios.post( window.location.href , { token: token }, {
+        headrs: {
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(response => {
+            console.log(response.data);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+
+</script>
+
 </body>
 </html>
