@@ -30,6 +30,12 @@ $post = [
         </main>
     </div>
     <script>
+     
+    const urlParams = new URLSearchParams(window.location.search);
+    const postid = urlParams.get('postid');
+
+    
+
     </script>
 </body>
 </html>
