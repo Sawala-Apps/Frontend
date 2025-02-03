@@ -15,19 +15,21 @@
         <main class="container mx-auto flex flex-col items-center">
             <?php include '../includes/header.php'; ?>
             <div class="flex flex-col space-y-4 w-[80%] max-lg:w-[100%] border-brutal shadow-brutal rounded-lg p-4 bg-[#DFE5F2]">
-                <div class="flex items-center space-x-6 mb-8">
-                    <div class="w-24 h-24 rounded-full overflow-hidden border-4 border-brutal shadow-brutal">
-                        <img src="https://media.tenor.com/VGVjPI0mDS4AAAAe/hanni.png" alt="Profile Picture" class="w-full h-full object-cover">
-                    </div>
-                    <div class="flex flex-col">
-                        <span class="text-gray-800 text-2xl font-bold">Username</span>
-                        <button class="mt-2 px-4 py-2 bg-blue-500 text-white font-bold rounded-lg shadow-brutal hover:bg-blue-600 border-brutal">
-                            Edit Profile
-                        </button>
+                <div class="flex flex-row items-center justify-between w-full mb-8">
+                    <div class="flex flex-row items-center space-x-6">
+                        <div class="w-24 h-24 rounded-full overflow-hidden border-4 border-brutal shadow-brutal">
+                            <img src="https://media.tenor.com/VGVjPI0mDS4AAAAe/hanni.png" alt="Profile Picture" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex flex-col">
+                        <div class="flex flex-row p-2 items-center justify-center">
+                        <span class="text-black text-2xl font-bold">name</span>
+                        <span class="text-gray-800 text-xl ml-4">@uid</span>
+                        </div>
+                        <button id="settingsButton" class="px-4 py-2 bg-[#88AAEE] hover:bg-blue-600 text-black rounded-lg shadow-brutal btn-brutal border-brutal">Settings</button>
+                        </div>
                     </div>
                 </div>
 
-                <!-- jang gambar bos -->
                 <div class="grid grid-cols-3 gap-4 p-4">
                     <div class="relative group">
                         <div class="w-full h-32 overflow-hidden rounded-lg border-brutal">
@@ -57,6 +59,73 @@
             </div>
         </main>
     </div>
-</body>
 
+    <div id="settingsModal" class="fixed inset-0 bg-black bg-opacity-20 flex justify-center items-center hidden">
+        <div class="bg-white p-6 rounded-lg shadow-lg w-96">
+            <div class="flex flex-row">
+            <h2 class="text-xl font-bold mb-4">Settings</h2>
+            <h2 class="ml-auto hover:cursor-pointer" id="closeModal">x</h2>
+            </div>
+            <div class="space-y-4">
+                <button class="w-full py-2 px-4 bg-blue-500 text-white rounded-lg btn-brutal shadow-brutal border-brutal" id="editProfileButton">Edit Profile</button>
+                <button class="w-full py-2 px-4 bg-yellow-500 text-white rounded-lg btn-brutal shadow-brutal border-brutal" id="changePasswordButton">Change Password</button>
+                <button class="w-full py-2 px-4 bg-red-500 text-white rounded-lg btn-brutal shadow-brutal border-brutal">Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="editProfileModal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden">
+        <div class="bg-white p-6 rounded-lg shadow-lg w-96 relative">
+            <h2 class="text-xl font-bold mb-4">Edit Profile</h2>
+            <button class="absolute top-2 right-2 text-gray-500 close-modal hover:cursor-pointer">&times;</button>
+            <form>
+                <label class="block mb-2">Full name</label>
+                <input type="text" class="w-full mb-4 border p-2 rounded-lg">
+                <label class="block mb-2">Profile Picture</label>
+                <input type="file" class="w-full mb-4 border p-2 rounded-lg">
+                <button type="submit" class="w-full py-2 px-4 bg-blue-500 text-white rounded-lg btn-brutal border-brutal shadow-brutal">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="changePasswordModal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden">
+        <div class="bg-white p-6 rounded-lg shadow-lg w-96 relative">
+            <h2 class="text-xl font-bold mb-4">Change Password</h2>
+            <button class="absolute top-2 right-2 text-gray-500 close-modal hover:cursor-pointer">&times;</button>
+            <form>
+                <label class="block mb-2">Old Password</label>
+                <input type="password" class="w-full mb-4 border p-2 rounded-lg">
+                <label class="block mb-2">New Password</label>
+                <input type="password" class="w-full mb-4 border p-2 rounded-lg">
+                <label class="block mb-2">Confirm Password</label>
+                <input type="password" class="w-full mb-4 border p-2 rounded-lg">
+                <button type="submit" class="w-full py-2 px-4 bg-yellow-500 text-white rounded-lg btn-brutal border-brutal shadow-brutal">Save Password</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("settingsButton").addEventListener("click", function() {
+            document.getElementById("settingsModal").classList.remove("hidden");
+        });
+
+        document.getElementById("closeModal").addEventListener("click", function() {
+            document.getElementById("settingsModal").classList.add("hidden");
+        });
+
+        document.getElementById("editProfileButton").addEventListener("click", function() {
+            document.getElementById("editProfileModal").classList.remove("hidden");
+        });
+
+        document.getElementById("changePasswordButton").addEventListener("click", function() {
+            document.getElementById("changePasswordModal").classList.remove("hidden");
+        });
+
+        document.querySelectorAll(".close-modal").forEach(button => {
+            button.addEventListener("click", function() {
+                this.parentElement.parentElement.classList.add("hidden");
+            });
+        });
+    </script>
+</body>
 </html>
