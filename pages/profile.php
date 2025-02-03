@@ -19,43 +19,20 @@
                 <div class="flex flex-row items-center justify-between w-full mb-8">
                     <div class="flex flex-row items-center space-x-6">
                         <div class="w-24 h-24 rounded-full overflow-hidden border-4 border-brutal shadow-brutal">
-                            <img src="https://media.tenor.com/VGVjPI0mDS4AAAAe/hanni.png" alt="Profile Picture" class="w-full h-full object-cover">
+                            <img id="profile-picture" alt="Profile Picture" class="w-full h-full object-cover">
                         </div>
                         <div class="flex flex-col">
                         <div class="flex flex-row p-2 items-center justify-center">
-                        <span class="text-black text-2xl font-bold">name</span>
-                        <span class="text-gray-800 text-xl ml-4">@uid</span>
+                        <span id="name" class="text-black text-2xl font-bold"></span>
+                        <span id="username" class="text-gray-800 text-xl ml-4"></span>
                         </div>
                         <button id="settingsButton" class="px-4 py-2 bg-[#88AAEE] hover:bg-blue-600 text-black rounded-lg shadow-brutal btn-brutal border-brutal">Settings</button>
                         </div>
                     </div>
                 </div>
 
-                <div class="grid grid-cols-3 gap-4 p-4">
-                    <div class="relative group">
-                        <div class="w-full h-32 overflow-hidden rounded-lg border-brutal">
-                            <img src="https://stickercommunity.com/uploads/main/25-08-2023-09-24-59b9adi-sticker6.webp" alt="Post Image" class="w-full h-full object-cover hover:cursor-pointer">
-                        </div>
-                        <a href="/post-detail/1" class="absolute inset-0"></a>
-                    </div>
-                    <div class="relative group">
-                        <div class="w-full h-32 overflow-hidden rounded-lg border-brutal">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRv1cq2y70vyI2xVR29IjVThcT4qRxQoVixmw&s" alt="Post Image" class="w-full h-full object-cover">
-                        </div>
-                        <a href="/post-detail/1" class="absolute inset-0"></a>
-                    </div>
-                    <div class="relative group">
-                        <div class="w-full h-32 overflow-hidden rounded-lg border-brutal">
-                            <img src="https://i.ytimg.com/vi/BPfLMccFhLk/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCZG-buioKCNuzqv5uya1ivqtv82A" alt="Post Image" class="w-full h-full object-cover">
-                        </div>
-                        <a href="/post-detail/1" class="absolute inset-0"></a>
-                    </div>
-                    <div class="relative group">
-                        <div class="w-full h-32 overflow-hidden rounded-lg border-brutal">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBaJ07gNAlhkbj0yd0oTZywicRTZv_6odKRA&s" alt="Post Image" class="w-full h-full object-cover">
-                        </div>
-                        <a href="/post-detail/1" class="absolute inset-0"></a>
-                    </div>
+                <div id="post-container" class="grid grid-cols-3 gap-4 p-4">
+                    
                 </div>
             </div>
         </main>
@@ -211,6 +188,64 @@
             });
             }
         });
-    </script>
+    
+    //Get Profile
+    document.addEventListener("DOMContentLoaded", function () {
+    const token = localStorage.getItem("token");
+    
+    if (!token) {
+        window.location.href = "login.php"; // Redirect jika tidak ada token
+        return;
+    }
+    axios.get("https://backend-production-c986.up.railway.app/profile",{
+        headers: { Authorization: `Bearer ${token}` }
+    }).then(response => {
+        const profile = response.data;
+        
+        // Menampilkan username
+        document.getElementById("username").innerText = "@"+profile.uid;
+        
+        //Menampilkan fullname
+        document.getElementById("name").innerText = profile.fullname;
+
+        // Menampilkan foto profil
+        const profilePic = document.getElementById("profile-picture");
+
+        // Cek apakah profile_picture tidak null dan bukan string kosong
+        if (profile.profile_picture && profile.profile_picture !== "null") {
+            profilePic.src = profile.profile_picture; // Gunakan gambar dari API
+        } else {
+            profilePic.src = "https://www.flaticon.com/free-icon/user_149071"; // Gunakan gambar default
+        }
+
+        const postContainer = document.getElementById("post-container");
+
+        // Cek apakah ada post
+        if (profile.posts.length === 0) {
+            postContainer.style.display = "none"; // Sembunyikan jika tidak ada post
+        } else {
+            postContainer.style.display = "grid"; // Tampilkan post dalam grid
+            postContainer.innerHTML = ""; //Kosongkan sebelum diisi ulang
+
+            profile.posts.forEach(post => {
+                const postElement = `
+                    <div class="relative group">
+                        <div class="w-full h-32 overflow-hidden rounded-lg border-brutal">
+                            <img src="${post.content_image ? post.content_image : 'https://via.placeholder.com/100'}" 
+                                 alt="Post Image" 
+                                 class="w-full h-full object-cover">
+                        </div>
+                        <a href="/post-detail/${post.postid}" class="absolute inset-0"></a>
+                    </div>
+                `;
+                postContainer.innerHTML += postElement;
+            });
+        }
+
+    }).catch(error => {
+        console.error("Failed to load", error.response.data);
+    });
+});
+</script>
 </body>
 </html>
