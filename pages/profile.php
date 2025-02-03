@@ -6,6 +6,7 @@
     <title>Feed Page</title>
     <link rel="stylesheet" href="../assets/css/style.css">
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Mega:wght@100..900&display=swap" rel="stylesheet">
@@ -78,11 +79,11 @@
         <div class="bg-white p-6 rounded-lg shadow-lg w-96 relative">
             <h2 class="text-xl font-bold mb-4">Edit Profile</h2>
             <button class="absolute top-2 right-2 text-gray-500 close-modal hover:cursor-pointer">&times;</button>
-            <form>
+            <form id="editProfileForm">
                 <label class="block mb-2">Full name</label>
-                <input type="text" class="w-full mb-4 border p-2 rounded-lg">
+                <input id="newName" type="text" class="w-full mb-4 border p-2 rounded-lg">
                 <label class="block mb-2">Profile Picture</label>
-                <input type="file" class="w-full mb-4 border p-2 rounded-lg">
+                <input id="image" type="file" class="w-full mb-4 border p-2 rounded-lg">
                 <button type="submit" class="w-full py-2 px-4 bg-blue-500 text-white rounded-lg btn-brutal border-brutal shadow-brutal">Save Changes</button>
             </form>
         </div>
@@ -124,6 +125,31 @@
         document.querySelectorAll(".close-modal").forEach(button => {
             button.addEventListener("click", function() {
                 this.parentElement.parentElement.classList.add("hidden");
+            });
+        });
+
+        document.getElementById("editProfileForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const token = localStorage.getItem("token");
+            const name = document.getElementById("newName").value;
+            const image = document.getElementById("image").files[0];
+            const formData = new FormData();
+            formData.append("fullname", name);
+            if (image) {
+                formData.append("profilePicture", image);
+            }
+
+            axios.patch("https://backend-production-c986.up.railway.app/profile", formData, {
+                headers: {
+                    "Authorization": `Bearer ${token}`,
+                    "Content-Type": "multipart/form-data"
+                }
+            })
+            .then(function (response) {
+                alert("Berhasil");
+            })
+            .catch(function (error) {
+                alert("Gagal merubah username");
             });
         });
     </script>
