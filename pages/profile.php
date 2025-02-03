@@ -93,13 +93,14 @@
         <div class="bg-white p-6 rounded-lg shadow-lg w-96 relative">
             <h2 class="text-xl font-bold mb-4">Change Password</h2>
             <button class="absolute top-2 right-2 text-gray-500 close-modal hover:cursor-pointer">&times;</button>
-            <form>
+            <form id="changePasswordForm">
                 <label class="block mb-2">Old Password</label>
-                <input type="password" class="w-full mb-4 border p-2 rounded-lg">
+                <input id="oldPassword" type="password" class="w-full mb-4 border p-2 rounded-lg">
                 <label class="block mb-2">New Password</label>
-                <input type="password" class="w-full mb-4 border p-2 rounded-lg">
+                <input id="newPassword" type="password" class="w-full mb-4 border p-2 rounded-lg">
+                <small id="passwordHelp" class="text-red-500">Password harus 6-12 karakter, mengandung 1 huruf kapital, dan 1 simbol.</small>
                 <label class="block mb-2">Confirm Password</label>
-                <input type="password" class="w-full mb-4 border p-2 rounded-lg">
+                <input id="confirmPassword" type="password" class="w-full mb-4 border p-2 rounded-lg">
                 <button type="submit" class="w-full py-2 px-4 bg-yellow-500 text-white rounded-lg btn-brutal border-brutal shadow-brutal">Save Password</button>
             </form>
         </div>
@@ -128,6 +129,26 @@
             });
         });
 
+        function validatePassword(password) {
+            const minLength = 6;
+            const maxLength = 12;
+            const hasUpperCase = /[A-Z]/.test(password);
+            const hasSymbol = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+            const isValidLength = password.length >= minLength && password.length <= maxLength;
+            return hasUpperCase && hasSymbol && isValidLength;
+        }
+
+        document.getElementById("newPassword").addEventListener("input", function() {
+            const password = document.getElementById("newPassword").value;
+            const passwordHelp = document.getElementById("passwordHelp");
+
+            if (validatePassword(password)) {
+                passwordHelp.classList.add("hidden");
+            } else {
+                passwordHelp.classList.remove("hidden");
+            }
+        });
+
         document.getElementById("editProfileForm").addEventListener("submit", function(event) {
             event.preventDefault();
             const token = localStorage.getItem("token");
@@ -146,11 +167,49 @@
                 }
             })
             .then(function (response) {
-                alert("Berhasil");
+                alert("Berhasil merubah username");
+                document.getElementById("newName").value = '';
+                document.getElementById("image").value = '';
+                document.getElementById("editProfileModal").classList.add("hidden");
             })
             .catch(function (error) {
                 alert("Gagal merubah username");
+                document.getElementById("newName").value = '';
+                document.getElementById("image").value = '';
+            })
+        });
+
+        document.getElementById("changePasswordForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const token = localStorage.getItem("token");
+            const oldPw = document.getElementById("oldPassword").value;
+            const newPw = document.getElementById("newPassword").value;
+            const confPw = document.getElementById("confirmPassword").value;
+
+            if (newPw !== confPw) {
+                alert("Password Harus Sama")
+            } else if (!validatePassword(newPw)) {
+                alert("Password tidak memenuhi kriteria");
+            } else {
+                axios.patch("https://backend-production-c986.up.railway.app/profile/password", {
+                        "oldPassword": oldPw,
+                        "newPassword": confPw
+                    }, {
+                    headers: {
+                        "Authorization": `Bearer ${token}`
+                    }
+                })
+                .then(function (response) {
+                    alert("Berhasil merubah password");
+                    document.getElementById("oldPassword").value = '';
+                    document.getElementById("newPassword").value = '';
+                    document.getElementById("confirmPassword").value = '';
+                    document.getElementById("changePasswordModal").classList.add("hidden");
+                })
+                .catch(function (error) {
+                    alert("Gagal merubah password");
             });
+            }
         });
     </script>
 </body>
