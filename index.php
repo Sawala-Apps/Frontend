@@ -79,15 +79,17 @@
         </div>
       </a>
       <!-- Development -->
-      <div class="bg-[#FFE8D2] shadow-join border-brutal rounded-xl p-6 flex flex-col items-center">
-        <div class="bg-white rounded-full p-4 mb-4">
-          <img src="https://placehold.co/400" alt="Story Icon" class="w-12 h-12">
+      <a href="sharestory.php">
+        <div class="bg-[#FFE8D2] shadow-join border-brutal rounded-xl p-6 flex flex-col items-center">
+          <div class="bg-white rounded-full p-4 mb-4">
+            <img src="https://placehold.co/400" alt="Story Icon" class="w-12 h-12">
+          </div>
+          <h3 class="text-2xl font-semibold text-gray-900 mb-2">Bagikan Ceritamu</h3>
+          <p class="text-gray-700 text-center">Berbagi cerita pribadi dan pengalaman dalam komunitas untuk memperkaya diskusi.</p>
         </div>
-        <h3 class="text-2xl font-semibold text-gray-900 mb-2">Bagikan Ceritamu</h3>
-        <p class="text-gray-700 text-center">Berbagi cerita pribadi dan pengalaman dalam komunitas untuk memperkaya diskusi.</p>
-      </div>
+      </a>
       <!-- Ecommerce -->
-      <a href="detailchatbot.php" class="block w-full">
+      <a href="chatbot.php" class="block w-full">
         <div class="bg-[#FFE8A3] shadow-join border-brutal rounded-xl p-6 flex flex-col items-center">
           <div class="bg-white rounded-full p-4 mb-4">
             <img src="https://placehold.co/400" alt="Chatbot Icon" class="w-12 h-12">
