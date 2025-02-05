@@ -201,6 +201,7 @@
         headers: { Authorization: `Bearer ${token}` }
     }).then(response => {
         const profile = response.data;
+        console.log(profile);
         
         // Menampilkan username
         document.getElementById("username").innerText = "@"+profile.uid;
@@ -226,8 +227,10 @@
         } else {
             postContainer.style.display = "grid"; // Tampilkan post dalam grid
             postContainer.innerHTML = ""; //Kosongkan sebelum diisi ulang
+            
 
             profile.posts.forEach(post => {
+                postContainer.setAttribute('data-postid', post.postid);
                 const postElement = `
                     <div class="relative group">
                         <div class="w-full h-32 overflow-hidden rounded-lg border-brutal">
@@ -235,10 +238,14 @@
                                  alt="Post Image" 
                                  class="w-full h-full object-cover">
                         </div>
-                        <a href="/post-detail/${post.postid}" class="absolute inset-0"></a>
+                        
                     </div>
                 `;
                 postContainer.innerHTML += postElement;
+                postContainer.addEventListener('click', function () {
+        const postid = this.getAttribute('data-postid');
+        window.location.href = `detail.php?postid=${postid}`;
+    })
             });
         }
 
