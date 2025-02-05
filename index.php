@@ -69,13 +69,15 @@
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       <!-- Web Design -->
-      <div class="bg-[#D7F2EE] shadow-join border-brutal rounded-xl p-6 flex flex-col items-center">
-        <div class="bg-white rounded-full p-4 mb-4">
-          <img src="https://placehold.co/400" alt="Feed Icon" class="w-12 h-12">
+      <a href="detailchatbot.php" class="block w-full">
+        <div class="bg-[#D7F2EE] shadow-join border-brutal rounded-xl p-6 flex flex-col items-center">
+          <div class="bg-white rounded-full p-4 mb-4">
+            <img src="https://placehold.co/400" alt="Feed Icon" class="w-12 h-12">
+          </div>
+          <h3 class="text-2xl font-semibold text-gray-900 mb-2">Feed Interaktif</h3>
+          <p class="text-gray-700 text-center">Fitur feed interaktif untuk berbagi pemikiran, artikel, dan diskusi dengan komunitas yang aktif.</p>
         </div>
-        <h3 class="text-2xl font-semibold text-gray-900 mb-2">Feed Interaktif</h3>
-        <p class="text-gray-700 text-center">Fitur feed interaktif untuk berbagi pemikiran, artikel, dan diskusi dengan komunitas yang aktif.</p>
-      </div>
+      </a>
       <!-- Development -->
       <div class="bg-[#FFE8D2] shadow-join border-brutal rounded-xl p-6 flex flex-col items-center">
         <div class="bg-white rounded-full p-4 mb-4">
@@ -143,5 +145,26 @@
     </div>
   </div>
 </section>
+<!-- Footer -->
+<footer class="bg-[#1A1A1A] text-white py-6 mt-12">
+    <div class="max-w-4xl mx-auto px-4 space-y-4">
+      <div class="text-center">
+        <h2 class="text-lg font-semibold">Sawala - Apps</h2>
+        <p class="text-gray-400">Aplikasi diskusi dan kolaborasi</p>
+      </div>
+      <div class="flex flex-col sm:flex-row sm:justify-between items-center text-sm">
+        <p class="text-gray-400 mb-4 sm:mb-0">
+          &copy; 2025 by Sawala Team
+        </p>
+        <ul class="text-gray-400 list-disc list-inside">
+          <li>NPM_NAMA ANGGOTA</li>
+          <li>NPM_NAMA ANGGOTA</li>
+          <li>NPM_NAMA ANGGOTA</li>
+          <li>NPM_NAMA ANGGOTA</li>
+          <li>NPM_NAMA ANGGOTA</li>
+        </ul>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
