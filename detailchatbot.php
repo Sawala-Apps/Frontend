@@ -11,8 +11,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body class="bg-[#DFE5F2] text-[#1A1A1A] font-sans">
-  <header class="flex flex-wrap justify-between items-center p-6 bg-[#DFE5F2] sticky top-0 z-50">
+<body class="bg-[#FFE8A3] text-[#1A1A1A] font-sans">
+  <header class="flex flex-wrap justify-between items-center p-6 bg-[#FFE8A3] sticky top-0 z-50">
     <div class="text-3xl font-bold text-[#1A1A1A]">Sawala</div>
     <a href="pages/login.php" class="px-4 py-2 mt-4 sm:mt-0 bg-[#1A1A1A] text-[#FFFFFF] rounded-xl font-bold hover:bg-[#333333]">
       Login here

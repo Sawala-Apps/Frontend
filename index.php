@@ -69,7 +69,7 @@
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       <!-- Web Design -->
-      <a href="detailchatbot.php" class="block w-full">
+      <a href="" class="block w-full">
         <div class="bg-[#D7F2EE] shadow-join border-brutal rounded-xl p-6 flex flex-col items-center">
           <div class="bg-white rounded-full p-4 mb-4">
             <img src="https://placehold.co/400" alt="Feed Icon" class="w-12 h-12">
@@ -87,13 +87,15 @@
         <p class="text-gray-700 text-center">Berbagi cerita pribadi dan pengalaman dalam komunitas untuk memperkaya diskusi.</p>
       </div>
       <!-- Ecommerce -->
-      <div class="bg-[#FFE8A3] shadow-join border-brutal rounded-xl p-6 flex flex-col items-center">
-        <div class="bg-white rounded-full p-4 mb-4">
-          <img src="https://placehold.co/400" alt="Chatbot Icon" class="w-12 h-12">
+      <a href="detailchatbot.php" class="block w-full">
+        <div class="bg-[#FFE8A3] shadow-join border-brutal rounded-xl p-6 flex flex-col items-center">
+          <div class="bg-white rounded-full p-4 mb-4">
+            <img src="https://placehold.co/400" alt="Chatbot Icon" class="w-12 h-12">
+          </div>
+          <h3 class="text-2xl font-semibold text-gray-900 mb-2">Chat Bot</h3>
+          <p class="text-gray-700 text-center">Fitur chatbot untuk memberikan bantuan seputar pertanyaan umum dan navigasi di platform Sawala.</p>
         </div>
-        <h3 class="text-2xl font-semibold text-gray-900 mb-2">Chat Bot</h3>
-        <p class="text-gray-700 text-center">Fitur chatbot untuk memberikan bantuan seputar pertanyaan umum dan navigasi di platform Sawala.</p>
-      </div>
+      </a>
     </div>
   </section>
   <!-- Services Section -->
