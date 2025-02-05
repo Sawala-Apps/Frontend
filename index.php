@@ -69,7 +69,7 @@
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       <!-- Web Design -->
-      <a href="" class="block w-full">
+      <a href="feedinteraktif.php" class="block w-full">
         <div class="bg-[#D7F2EE] shadow-join border-brutal rounded-xl p-6 flex flex-col items-center">
           <div class="bg-white rounded-full p-4 mb-4">
             <img src="https://placehold.co/400" alt="Feed Icon" class="w-12 h-12">
