@@ -35,6 +35,7 @@
        })
        .then(function (response) {
         alert("postingan berhasil dibuat!");
+        window.location.reload()
         console.log(response.data);
        })
        .catch(function (error) {
