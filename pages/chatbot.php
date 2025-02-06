@@ -36,7 +36,10 @@
                 <button type="submit" class="btn-brutal px-6 py-2 bg-[#88AAEE] text-black font-bold rounded-lg shadow-brutal hover:bg-blue-600 border-brutal max-sm:mt-3">Send</button>
             </div>
         </form>
+
+       
     </div>
+    <?php include '../includes/footer-feed.php'; ?>
     </main>
     </div>
         

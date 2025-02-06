@@ -19,13 +19,13 @@
 
     <div id="feed-container" class="w-full space-y-4"></div>
        
+    <?php include '../includes/footer-feed.php'; ?>
     </main>
     </div>
     <script>
     const token = localStorage.getItem("token");
     if (!token) {
         window.location.href = "login.php"; // Redirect jika tidak ada token
-        return;
     }
     
     const feedContainer = document.getElementById('feed-container');

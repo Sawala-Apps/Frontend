@@ -33,7 +33,7 @@
     <div class="w-screen h-screen flex justify-center items-center">
         <div class="w-[62%] flex flex-col items-center">
             <main class="container mx-auto flex flex-col items-center">
-                <div class="flex flex-col space-y-4 w-[80%] max-lg:w-[100%] border-brutal shadow-brutal rounded-lg p-4 bg-[#DFE5F2]">
+                <div class="flex flex-col space-y-4 w-[80%] max-lg:w-[100%] border-brutal shadow-brutal rounded-lg p-4 bg-[#DFE5F2] mt-42" >
                     <div class="p-6">
                         <h2 class="text-2xl font-semibold text-gray-800 mb-4 text-center">Register</h2>
                         <form id="registerForm" enctype="multipart/form-data">
@@ -64,6 +64,8 @@
                         <p class="text-center mt-4 text-sm text-gray-500">Already have an account? <a href="login.php" class="text-blue-500 hover:underline">Login</a></p>
                     </div>
                 </div>
+
+                <?php include '../includes/footer-feed.php'; ?>
             </main>
         </div>
     </div>

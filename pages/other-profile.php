@@ -88,7 +88,6 @@
     const token = localStorage.getItem("token");
     if (!token) {
          window.location.href = "login.php"; // Redirect jika tidak ada token
-        return;
     }
     
     axios.get("https://backend-production-c986.up.railway.app/profile/nadin",{

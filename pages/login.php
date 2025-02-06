@@ -53,6 +53,8 @@
                         <p class="text-center mt-4 text-sm text-gray-500">Don't have an account? <a href="register.php" class="text-blue-500 hover:underline">Sign up</a></p>
                     </div>
                 </div>
+
+                <?php include '../includes/footer-feed.php'; ?>
             </main>
         </div>
     </div>

@@ -35,6 +35,8 @@
                     
                 </div>
             </div>
+
+            <?php include '../includes/footer-feed.php'; ?>
         </main>
     </div>
 
@@ -81,7 +83,10 @@
                 <button type="submit" class="w-full py-2 px-4 bg-yellow-500 text-white rounded-lg btn-brutal border-brutal shadow-brutal">Save Password</button>
             </form>
         </div>
+        
     </div>
+
+    
 
     <script>
         document.getElementById("settingsButton").addEventListener("click", function() {
