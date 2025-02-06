@@ -47,7 +47,7 @@
             <div class="space-y-4">
                 <button class="w-full py-2 px-4 bg-blue-500 text-white rounded-lg btn-brutal shadow-brutal border-brutal" id="editProfileButton">Edit Profile</button>
                 <button class="w-full py-2 px-4 bg-yellow-500 text-white rounded-lg btn-brutal shadow-brutal border-brutal" id="changePasswordButton">Change Password</button>
-                <button class="w-full py-2 px-4 bg-red-500 text-white rounded-lg btn-brutal shadow-brutal border-brutal">Logout</button>
+                <button class="w-full py-2 px-4 bg-red-500 text-white rounded-lg btn-brutal shadow-brutal border-brutal" id="logout">Logout</button>
             </div>
         </div>
     </div>
@@ -98,6 +98,13 @@
 
         document.getElementById("changePasswordButton").addEventListener("click", function() {
             document.getElementById("changePasswordModal").classList.remove("hidden");
+        });
+
+        document.getElementById("logout").addEventListener("click", function() {
+            if (confirm("Apakah Anda yakin ingin logout?")) {
+                localStorage.removeItem("token");
+                window.location.href = "login.php";
+            }
         });
 
         document.querySelectorAll(".close-modal").forEach(button => {
