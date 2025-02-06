@@ -25,7 +25,7 @@
     <script>
     const token = localStorage.getItem("token");
     if (!token) {
-        window.location.href = "login.php"; // Redirect jika tidak ada token
+        window.location.href = "login.php"; 
     }
     
     const feedContainer = document.getElementById('feed-container');
