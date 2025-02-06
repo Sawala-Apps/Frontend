@@ -232,6 +232,7 @@
         }
 
         const postContainer = document.getElementById("post-container");
+        postContainer.classList.add('cursor-pointer');
 
         // Cek apakah ada post
         if (profile.posts.length === 0) {
