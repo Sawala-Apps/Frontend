@@ -34,6 +34,7 @@
                     
                 </div>
             </div>
+            <?php include '../includes/footer-feed.php'; ?>
         </main>
     </div>
 
@@ -89,8 +90,11 @@
     if (!token) {
          window.location.href = "login.php"; // Redirect jika tidak ada token
     }
+    const urlParams = new URLSearchParams(window.location.search);
+    const uid = urlParams.get('uid');
+
     
-    axios.get("https://backend-production-c986.up.railway.app/profile/nadin",{
+    axios.get("https://backend-production-c986.up.railway.app/profile/" + uid,{
         headers: { Authorization: `Bearer ${token}` }
     }).then(response => {
         const profile = response.data;

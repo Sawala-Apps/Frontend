@@ -55,7 +55,7 @@
         postContainer.innerHTML = `
         <div class="w-[80%] max-lg:w-[100%] mx-auto mb-6 p-6 bg-[#DFE5F2] border-brutal shadow-brutal rounded-lg ">
 
-        <div class="flex items-center justify-between">
+        <div id="toProfile" class="flex items-center justify-between">
             <div class="flex items-center space-x-4">
                 <img src="${post.profile_picture}" alt="User Avatar" class="w-10 h-10 rounded-md border-brutal shadow-brutal">
                 <div>
@@ -101,6 +101,12 @@
     postContainer.addEventListener('click', function () {
         const postid = this.getAttribute('data-postid');
         window.location.href = `detail.php?postid=${postid}`;
+    });
+
+    const toProfile = postContainer.querySelector("#toProfile");
+    toProfile.addEventListener("click", function (event) {
+        event.stopPropagation();
+        window.location.href = `other-profile.php?uid=${post.uid}`;
     })
 
     return postContainer;
