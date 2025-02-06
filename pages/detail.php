@@ -32,6 +32,11 @@
     </div>
     <script>
     const token = localStorage.getItem("token");
+    if (!token) {
+        window.location.href = "login.php"; // Redirect jika tidak ada token
+        return;
+    }
+    
     const urlParams = new URLSearchParams(window.location.search);
     const postid = urlParams.get('postid');
     const feedContainer = document.getElementById('feed-container');
