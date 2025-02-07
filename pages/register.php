@@ -10,7 +10,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Mega:wght@100..900&display=swap" rel="stylesheet">
-    <style>
+
+    <!-- Toastr CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Toastr JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+   <style>
         #loadingOverlay {
             display: none;
             position: fixed;
@@ -81,7 +89,12 @@
             const confirmPassword = document.getElementById("confirmPassword").value;
 
             if (password !== confirmPassword) {
-                alert("Password tidak sama!");
+                toastr.error("Password tidak sama!", "Kesalahan", {
+                    closeButton: true,
+                    progressBar: true,
+                    positionClass: "toast-top-right",
+                    timeOut: 3000
+                });
                 return;
             }
 
@@ -95,12 +108,24 @@
                 fullname: fullname
             })
             .then(function (response) {
-                alert("Register berhasil!");
+                toastr.success("Register berhasil!", "Sukses", {
+                    closeButton: true,
+                    progressBar: true,
+                    positionClass: "toast-top-right",
+                    timeOut: 3000
+                });
                 console.log(response.data);
-                window.location.href = "login.php";
+                setTimeout(() => {
+                    window.location.href = "login.php";
+                }, 2000);
             })
             .catch(function (error) {
-                alert("Gagal mendaftar");
+                toastr.error("Register gagal", "Error", {
+                    closeButton: true,
+                    progressBar: true,
+                    positionClass: "toast-top-right",
+                    timeOut: 3000
+                });
                 console.error(error);
             })
             .finally(function () {

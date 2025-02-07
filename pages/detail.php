@@ -280,12 +280,24 @@ function openEditModal(post, postContainer) {
             }
         })
         .then(function (response) {
-            alert("Edit feed sukses!");
-            window.location.reload()
+            toastr.success("Edit feed sukses!", "Sukses", {
+                closeButton: true,
+                progressBar: true,
+                positionClass: "toast-top-right",
+                timeOut: 2000
+            });
             console.log(response.data);
+            setTimeout(() => {
+            window.location.reload();
+            }, 2000);
         })
         .catch(function (response) {
-            alert("Edit feed gagal");
+            toastr.error("Edit feed gagal", "Error", {
+                closeButton: true,
+                progressBar: true,
+                positionClass: "toast-top-right",
+                timeOut: 3000
+            });
             console.error(response.error);
         })
         
@@ -300,12 +312,24 @@ function openEditModal(post, postContainer) {
             }
         })
         .then(function (response) {
-            alert("Delete feed sukses!");
-            window.location.href = "profile.php"
+            toastr.success("Delete feed sukses", "Sukses", {
+                closeButton: true,
+                progressBar: true,
+                positionClass: "toast-top-right",
+                timeOut: 1000
+            });
+            setTimeout(() => {
+            window.location.href = "profile.php";
+                }, 2000);
             console.log(response.data);
         })
         .catch(function (response) {
-            alert("Delete feed gagal");
+            toastr.error("Delete feed gagal", "Error", {
+                closeButton: true,
+                progressBar: true,
+                positionClass: "toast-top-right",
+                timeOut: 3000
+            });
             console.error(response.error);
         })
         
