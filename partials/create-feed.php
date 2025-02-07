@@ -53,15 +53,13 @@
                 closeButton: true,
                 progressBar: true,
                 positionClass: "toast-top-right",
-                timeOut: 3000
+                timeOut: 1000
             });
 
             console.log(response.data);
             
             // Delay sebelum refresh halaman agar toastr terlihat
-            setTimeout(() => {
-                window.location.reload();
-            }, 3000); // Tunggu 3 detik sebelum reload
+            window.location.reload();
         })
         .catch(function (error) {
             toastr.error("Gagal membuat postingan. Coba lagi!", "Error", {

@@ -10,9 +10,36 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Mega:wght@100..900&display=swap" rel="stylesheet">
+     
+    <!-- Toastr CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Toastr JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <style>
+        #loadingOverlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+    </style>
+
 </head>
 <body class="bg-white bg-[linear-gradient(to_right,#80808033_1px,transparent_1px),linear-gradient(to_bottom,#80808033_1px,transparent_1px)] bg-[size:70px_70px] font-sans items-center flex flex-col">
-    <div class="w-[62%] flex flex-col items-center">
+<div id="loadingOverlay">Loading...</div>    
+<div class="w-[62%] flex flex-col items-center">
     <main class="container mx-auto flex flex-col items-center">
             <?php include '../includes/header.php'; ?>
             <div id="feed-container" class="w-full space-y-4"></div>
@@ -40,6 +67,9 @@
     const postid = urlParams.get('postid');
     const feedContainer = document.getElementById('feed-container');
     const commentContainer = document.getElementById('comment-container');
+    const loadingOverlay = document.getElementById("loadingOverlay");
+    loadingOverlay.style.display = "flex"; // Tampilkan loading
+
     document.getElementById("chatForm").addEventListener("submit", function(event) {
         event.preventDefault();
         const comment = document.getElementById("message").value;
@@ -51,14 +81,27 @@
             }
         })
         .then(function (response) {
-            alert("Komentar berhasil ditambahkan!");
+            toastr.success("Komentar Berhasil Dibuat", "Sukses", {
+                closeButton: true,
+                progressBar: true,
+                positionClass: "toast-top-right",
+                timeOut: 1000
+            });
             window.location.reload();
             console.log(response.data);
         })
         .catch(function (response) {
-            alert("Gagal menambahkan komentar");
+            toastr.error("Gagal menambahkan komentar", "Error", {
+                closeButton: true,
+                progressBar: true,
+                positionClass: "toast-top-right",
+                timeOut: 3000
+            });
             console.error(response.error);
         })
+        .finally(function () {
+                loadingOverlay.style.display = "none"; // Sembunyikan loading setelah selesai
+        });
 
     })
 
@@ -82,6 +125,9 @@
     .catch(function (error) {
         console.error(error);
     })
+    .finally(function () {
+                loadingOverlay.style.display = "none"; // Sembunyikan loading setelah selesai
+    });
 
     function createCommentElement(comment) {
         const commentContainer = document.createElement('div');
