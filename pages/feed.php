@@ -22,6 +22,11 @@
     <?php include '../includes/footer-feed.php'; ?>
     </main>
     </div>
+
+    <button id="scrollTopBtn" class="hidden shadow-brutal btn-brutal border-brutal fixed bottom-8 right-8 bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-700 transition-all duration-300">
+    ⇧
+    </button>
+
     <script>
     const token = localStorage.getItem("token");
     if (!token) {
@@ -112,6 +117,22 @@
     return postContainer;
     }
 
+    const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+    window.addEventListener("scroll", function () {
+        if (window.scrollY > 300) {
+            scrollTopBtn.classList.remove("hidden");
+        } else {
+            scrollTopBtn.classList.add("hidden");
+        }
+    });
+
+    scrollTopBtn.addEventListener("click", function () {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
 
 </script>
 

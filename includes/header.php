@@ -2,7 +2,7 @@
 $current_page = basename($_SERVER['REQUEST_URI']);
 ?>
 
-<nav class="bg-[#DFE5F2] border-brutal shadow-brutal p-4 w-[80%] max-lg:w-[100%] my-5 rounded-md">
+<nav class="bg-[#DFE5F2] border-brutal shadow-brutal p-4 w-[80%] max-lg:w-[100%] my-5 rounded-md ">
     <div class="max-w-5xl mx-auto flex justify-between items-center">
         <a href="#" class="text-xl font-bold text-gray-900 text-sm">Sawala</a>
         <ul class="hidden lg:flex space-x-6 text-lg text-gray-800">
