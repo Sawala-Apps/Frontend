@@ -108,7 +108,7 @@
         document.getElementById("logout").addEventListener("click", function() {
             if (confirm("Apakah Anda yakin ingin logout?")) {
                 localStorage.removeItem("token");
-                window.location.href = "login.php";
+                window.location.href = "../index.php";
             }
         });
 
@@ -156,10 +156,9 @@
                 }
             })
             .then(function (response) {
-                alert("Berhasil merubah username");
-                document.getElementById("newName").value = '';
-                document.getElementById("image").value = '';
+                alert("Berhasil mengupdate profile");
                 document.getElementById("editProfileModal").classList.add("hidden");
+                window.location.reload();
             })
             .catch(function (error) {
                 alert("Gagal merubah username");
@@ -190,10 +189,8 @@
                 })
                 .then(function (response) {
                     alert("Berhasil merubah password");
-                    document.getElementById("oldPassword").value = '';
-                    document.getElementById("newPassword").value = '';
-                    document.getElementById("confirmPassword").value = '';
                     document.getElementById("changePasswordModal").classList.add("hidden");
+                    window.location.reload();
                 })
                 .catch(function (error) {
                     alert("Gagal merubah password");
@@ -243,23 +240,27 @@
             
 
             profile.posts.forEach(post => {
-                postContainer.setAttribute('data-postid', post.postid);
-                const postElement = `
-                    <div class="relative group">
-                        <div class="w-full h-32 overflow-hidden rounded-lg border-brutal">
-                            <img src="${post.content_image ? post.content_image : 'https://via.placeholder.com/100'}" 
-                                 alt="Post Image" 
-                                 class="w-full h-full object-cover">
-                        </div>
-                        
-                    </div>
-                `;
-                postContainer.innerHTML += postElement;
-                postContainer.addEventListener('click', function () {
+    const postElement = document.createElement("div");
+    postElement.classList.add("relative", "group");
+    postElement.setAttribute("data-postid", post.postid); // Set postid untuk masing-masing post
+    
+    postElement.innerHTML = `
+        <div class="w-full h-32 overflow-hidden rounded-lg border-brutal">
+            <img src="${post.content_image ? post.content_image : 'https://via.placeholder.com/100'}" 
+                 alt="Post Image" 
+                 class="w-full h-full object-cover">
+        </div>
+    `;
+
+    // Tambahkan event listener di dalam loop
+    postElement.addEventListener('click', function () {
         const postid = this.getAttribute('data-postid');
         window.location.href = `detail.php?postid=${postid}`;
-    })
-            });
+    });
+
+    postContainer.appendChild(postElement);
+});
+
         }
 
     }).catch(error => {

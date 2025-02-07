@@ -52,6 +52,7 @@
         })
         .then(function (response) {
             alert("Komentar berhasil ditambahkan!");
+            window.location.reload();
             console.log(response.data);
         })
         .catch(function (response) {
@@ -251,7 +252,7 @@ function openEditModal(post, postContainer) {
         })
         .then(function (response) {
             alert("Delete feed sukses!");
-            window.location.href = "/pages/profile.php"
+            window.location.href = "profile.php"
             console.log(response.data);
         })
         .catch(function (response) {
