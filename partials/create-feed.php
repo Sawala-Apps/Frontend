@@ -1,3 +1,7 @@
+<div id="loadingOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 9999; justify-content: center; align-items: center; color: white; font-size: 1.5rem; font-weight: bold;">
+    Loading...
+</div>
+
 <div class="w-[80%] max-lg:w-[100%] mx-auto mb-6 p-6 bg-[#DFE5F2] border-brutal shadow-brutal rounded-lg">
     <form id="postForm">
         <div class="mb-4">
@@ -14,37 +18,68 @@
     </form>
 </div>
 
+<!-- Toastr CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Toastr JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
 <script>
     document.getElementById("postForm").addEventListener("submit", function(event) {
-        event.preventDefault()
+        event.preventDefault();
+        
         const caption = document.getElementById("caption").value;
         const image = document.getElementById("image").files[0];
         const token = localStorage.getItem("token");
+        const loadingOverlay = document.getElementById("loadingOverlay");
 
-       const formData = new FormData();
-       formData.append("contentText", caption);
-       if (image) {
-        formData.append("mediaFiles", image);
-       }
+        loadingOverlay.style.display = "flex"; // Tampilkan loading
 
-       axios.post("https://backend-production-c986.up.railway.app/feeds", formData, {
-        headers: {
-            "Authorization": `Bearer ${token}`,
-            "Content-Type": "multipart/form-data"
+        const formData = new FormData();
+        formData.append("contentText", caption);
+        if (image) {
+            formData.append("mediaFiles", image);
         }
-       })
-       .then(function (response) {
-        alert("postingan berhasil dibuat!");
-        window.location.reload()
-        console.log(response.data);
-       })
-       .catch(function (error) {
-        alert("Gagal membuat postingan");
-        console.error(error);
-       })
-       .finally(function () {
-        document.getElementById("caption").value = ""; 
+
+        axios.post("https://backend-production-c986.up.railway.app/feeds", formData, {
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "multipart/form-data"
+            }
+        })
+        .then(function (response) {
+            toastr.success("Postingan berhasil dibuat!", "Sukses", {
+                closeButton: true,
+                progressBar: true,
+                positionClass: "toast-top-right",
+                timeOut: 3000
+            });
+
+            console.log(response.data);
+            
+            // Delay sebelum refresh halaman agar toastr terlihat
+            setTimeout(() => {
+                window.location.reload();
+            }, 3000); // Tunggu 3 detik sebelum reload
+        })
+        .catch(function (error) {
+            toastr.error("Gagal membuat postingan. Coba lagi!", "Error", {
+                closeButton: true,
+                progressBar: true,
+                positionClass: "toast-top-right",
+                timeOut: 3000
+            });
+
+            console.error(error);
+        })
+        .finally(function () {
+            setTimeout(() => {
+                loadingOverlay.style.display = "none"; // Sembunyikan loading setelah minimal waktu
+            }, 1000); // Minimal loading terlihat 1 detik sebelum hilang
+
+            document.getElementById("caption").value = ""; 
             document.getElementById("image").value = null;
-       })
+        });
     });
 </script>
