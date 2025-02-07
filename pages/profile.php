@@ -182,9 +182,6 @@
                 }
             })
             .then(function (response) {
-                // alert("Berhasil mengupdate profile");
-                // document.getElementById("editProfileModal").classList.add("hidden");
-                // window.location.reload();
                 toastr.success("Berhasil mengupdate profile", "Sukses", {
                     closeButton: true,
                     progressBar: true,
@@ -192,7 +189,7 @@
                     timeOut: 3000
                 });
                 setTimeout(() => {
-                    window.location.href = "feed.php";
+                    window.location.href = "profile.php";
                 }, 2000);
             })
             .catch(function (error) {
