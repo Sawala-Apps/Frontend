@@ -107,7 +107,7 @@
         document.getElementById("name").innerText = profile.fullname;
 
         // Menampilkan foto profil
-        const profilePic = document.getElementById("profile-picture");s
+        const profilePic = document.getElementById("profile-picture");
 
         // Cek apakah profile_picture tidak null dan bukan string kosong
         if (profile.profile_picture && profile.profile_picture !== "null") {
@@ -125,29 +125,33 @@
             postContainer.style.display = "grid"; // Tampilkan post dalam grid
             postContainer.innerHTML = ""; //Kosongkan sebelum diisi ulang
             
-
             profile.posts.forEach(post => {
-                postContainer.setAttribute('data-postid', post.postid);
-                const postElement = `
-                    <div class="relative group">
-                        <div class="w-full h-32 overflow-hidden rounded-lg border-brutal">
-                            <img src="${post.content_image ? post.content_image : 'https://via.placeholder.com/100'}" 
-                                 alt="Post Image" 
-                                 class="w-full h-full object-cover">
-                        </div>
-                        
-                    </div>
-                `;
-                postContainer.innerHTML += postElement;
-                postContainer.addEventListener('click', function () {
-        const postid = this.getAttribute('data-postid');
+    const postElement = document.createElement("div");
+    postElement.classList.add("relative", "group");
+    postElement.setAttribute("data-postid", post.postid); // Set ID di setiap post
+
+    postElement.innerHTML = `
+        <div class="w-full h-32 overflow-hidden rounded-lg border-brutal">
+            <img src="${post.content_image ? post.content_image : 'https://via.placeholder.com/100'}" 
+                 alt="Post Image" 
+                 class="w-full h-full object-cover">
+        </div>
+    `;
+
+    // Tambahkan event listener ke masing-masing post
+    postElement.addEventListener("click", function () {
+        const postid = this.getAttribute("data-postid");
         window.location.href = `detail.php?postid=${postid}`;
-    })
-            });
+    });
+
+    postContainer.appendChild(postElement); // Tambahkan post ke container
+});
+
+            
         }
 
     }).catch(error => {
-        console.error("Failed to load", error.response.data);
+        console.error("Failed to load", error);
     });
 });
 </script>
