@@ -10,6 +10,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Mega:wght@100..900&display=swap" rel="stylesheet">
+
+    <!-- Toastr CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Toastr JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
     <style>
         #loadingOverlay {
             display: none;
@@ -74,13 +82,27 @@
                 password: password
             })
             .then(function (response) {
-                alert("Login berhasil!");
+                toastr.success("Login berhasil!", "Sukses", {
+                    closeButton: true,
+                    progressBar: true,
+                    positionClass: "toast-top-right",
+                    timeOut: 3000
+                });
+                
                 console.log(response.data);
                 localStorage.setItem("token", response.data.token);
-                window.location.href = "feed.php"
+                setTimeout(() => {
+                    window.location.href = "feed.php";
+                }, 2000); // Redirect setelah 2 detik
             })
             .catch(function (error) {
-                alert("Gagal Login");
+                toastr.error("Gagal Login. Periksa kembali email atau password!", "Error", {
+                    closeButton: true,
+                    progressBar: true,
+                    positionClass: "toast-top-right",
+                    timeOut: 3000
+                });
+
                 console.error(error);
             })
             .finally(function () {
@@ -88,5 +110,6 @@
             });
         });
     </script>
+
 </body>
 </html>
