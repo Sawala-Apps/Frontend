@@ -225,7 +225,10 @@ function openSettingsModal(post, postContainer) {
     });
 
     document.getElementById("deletePostButton").addEventListener("click", function() {
-        deletePost(post.id, postContainer);
+        if(confirm("apakah ingin menghapus postingan ini?")) {
+            deletePost(post.id, postContainer);
+            modal.remove();
+        }
         modal.remove();
     });
 }
