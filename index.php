@@ -19,7 +19,6 @@
       <a href="#" class="border-2 border-gray-800 rounded-full px-3 py-1 hover:bg-violet">Home</a>
       <a href="#features" class="border-2 border-transparent rounded-full px-3 py-1 hover:font-bold">Features</a>
       <a href="#services" class="border-2 border-transparent rounded-full px-3 py-1 hover:font-bold">Services</a>
-      <a href="#contact" class="border-2 border-transparent rounded-full px-3 py-1 hover:font-bold">Contact</a>
     </nav>
     <a href="pages/login.php" class="px-4 py-2 mt-4 sm:mt-0 bg-[#1A1A1A] text-[#FFFFFF] rounded-xl font-bold hover:bg-[#333333]">
       Login here
@@ -125,30 +124,7 @@
   </div>
 </section>
 
-<!-- Contact Section -->
-<section id="contact" class="py-12 px-6 bg-[#1A1A1A] text-white">
-  <div class="text-center mb-12">
-    <h2 class="text-4xl font-bold mb-4">Hubungi Kami</h2>
-    <p class="text-lg text-gray-300">Kami siap membantu! Jangan ragu untuk menghubungi kami jika ada pertanyaan.</p>
-  </div>
-  <div class="flex flex-col md:flex-row justify-around items-center">
-    <div class="text-center mb-6 md:mb-0">
-      <i class="fas fa-envelope text-4xl text-yellow-400 mb-4"></i>
-      <h3 class="text-2xl font-semibold mb-2">Email</h3>
-      <p class="text-gray-400">support@sawala.com</p>
-    </div>
-    <div class="text-center mb-6 md:mb-0">
-      <i class="fas fa-phone text-4xl text-green-400 mb-4"></i>
-      <h3 class="text-2xl font-semibold mb-2">Telepon</h3>
-      <p class="text-gray-400">+62 812-3456-7890</p>
-    </div>
-    <div class="text-center">
-      <i class="fas fa-map-marker-alt text-4xl text-red-400 mb-4"></i>
-      <h3 class="text-2xl font-semibold mb-2">Alamat</h3>
-      <p class="text-gray-400">Jl. Sawala No. 10, Jakarta</p>
-    </div>
-  </div>
-</section>
+
 <!-- Footer -->
 <?php include 'includes/footer.php'; ?>
 </body>
