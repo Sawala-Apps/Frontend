@@ -10,8 +10,32 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Mega:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Toastr CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Toastr JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <style>
+        #loadingOverlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body class="bg-white bg-[linear-gradient(to_right,#80808033_1px,transparent_1px),linear-gradient(to_bottom,#80808033_1px,transparent_1px)] bg-[size:70px_70px] font-sans items-center flex flex-col">
+    <div id="loadingOverlay">Loading...</div>
     <div class="w-[62%] flex flex-col items-center">
         <main class="container mx-auto flex flex-col items-center">
             <?php include '../includes/header.php'; ?>
@@ -144,6 +168,8 @@
             const name = document.getElementById("newName").value;
             const image = document.getElementById("image").files[0];
             const formData = new FormData();
+            const loadingOverlay = document.getElementById("loadingOverlay");
+            loadingOverlay.style.display = "flex"; // Tampilkan loading
             formData.append("fullname", name);
             if (image) {
                 formData.append("profilePicture", image);
@@ -156,15 +182,38 @@
                 }
             })
             .then(function (response) {
-                alert("Berhasil mengupdate profile");
-                document.getElementById("editProfileModal").classList.add("hidden");
-                window.location.reload();
+                // alert("Berhasil mengupdate profile");
+                // document.getElementById("editProfileModal").classList.add("hidden");
+                // window.location.reload();
+                toastr.success("Berhasil mengupdate profile", "Sukses", {
+                    closeButton: true,
+                    progressBar: true,
+                    positionClass: "toast-top-right",
+                    timeOut: 3000
+                });
+                setTimeout(() => {
+                    window.location.href = "feed.php";
+                }, 2000);
             })
             .catch(function (error) {
                 alert("Gagal merubah username");
+                toastr.error("Gagal mengupdate profile", "Sukses", {
+                    closeButton: true,
+                    progressBar: true,
+                    positionClass: "toast-top-right",
+                    timeOut: 3000
+                });
+                
                 document.getElementById("newName").value = '';
                 document.getElementById("image").value = '';
+
+                setTimeout(() => {
+                    window.location.href = "feed.php";
+                }, 2000);
             })
+            .finally(function () {
+                loadingOverlay.style.display = "none"; 
+            });
         });
 
         document.getElementById("changePasswordForm").addEventListener("submit", function(event) {
@@ -174,10 +223,25 @@
             const newPw = document.getElementById("newPassword").value;
             const confPw = document.getElementById("confirmPassword").value;
 
+            const loadingOverlay = document.getElementById("loadingOverlay");
+            loadingOverlay.style.display = "flex"; // Tampilkan loading
+
             if (newPw !== confPw) {
-                alert("Password Harus Sama")
+                toastr.error("Password Harus Sama", "Gagal", {
+                    closeButton: true,
+                    progressBar: true,
+                    positionClass: "toast-top-right",
+                    timeOut: 3000
+                });
+                loadingOverlay.style.display = "none"; // Sembunyikan loading
             } else if (!validatePassword(newPw)) {
-                alert("Password tidak memenuhi kriteria");
+                toastr.error("Password tidak memenuhi kriteria", "Gagal", {
+                    closeButton: true,
+                    progressBar: true,
+                    positionClass: "toast-top-right",
+                    timeOut: 3000
+                });
+                loadingOverlay.style.display = "none"; // Sembunyikan loading
             } else {
                 axios.patch("https://backend-production-c986.up.railway.app/profile/password", {
                         "oldPassword": oldPw,
@@ -188,13 +252,27 @@
                     }
                 })
                 .then(function (response) {
-                    alert("Berhasil merubah password");
-                    document.getElementById("changePasswordModal").classList.add("hidden");
-                    window.location.reload();
+                    toastr.success("Berhasil merubah password", "Berhasil", {
+                        closeButton: true,
+                        progressBar: true,
+                        positionClass: "toast-top-right",
+                        timeOut: 3000
+                    });
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 2000);
                 })
                 .catch(function (error) {
-                    alert("Gagal merubah password");
-            });
+                    toastr.error("Gagal merubah password", "Gagal", {
+                        closeButton: true,
+                        progressBar: true,
+                        positionClass: "toast-top-right",
+                        timeOut: 3000
+                    });
+                })
+                .finally(function () {
+                    loadingOverlay.style.display = "none"; // Sembunyikan loading
+                });
             }
         });
     
