@@ -1,4 +1,4 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { GoogleGenerativeAI } from '@google/generative-ai';
 
 const businessInfo = `
 
@@ -40,90 +40,109 @@ Contoh Tanya Jawab:
 Silakan tanyakan jika Anda membutuhkan bantuan lebih lanjut terkait Sawala!  
 `;
 
-
-const API_KEY = "";
+const API_KEY = 'AIzaSyCfx3FjrvmLqx4G_AVf7tDlddpH9oSLmbk';
 const genAI = new GoogleGenerativeAI(API_KEY);
-const model = genAI.getGenerativeModel({ 
-    model: "gemini-1.5-flash",
-    systemInstruction: businessInfo
+const model = genAI.getGenerativeModel({
+	model: 'gemini-1.5-flash',
+	systemInstruction: businessInfo,
 });
 
 let messages = {
-    history: [],
-}
+	history: [],
+};
 
 async function sendMessage() {
+	console.log(messages);
+	const userMessage = document.querySelector('.chat-window input').value;
 
-    console.log(messages);
-    const userMessage = document.querySelector(".chat-window input").value;
-    
-    if (userMessage.length) {
-
-        try {
-            document.querySelector(".chat-window input").value = "";
-            document.querySelector(".chat-window .chat").insertAdjacentHTML("beforeend",`
-                <div class="user">
-                    <p>${userMessage}</p>
+	if (userMessage.length) {
+		try {
+			document.querySelector('.chat-window input').value = '';
+			document.querySelector('.chat-window .chat').insertAdjacentHTML(
+				'beforeend',
+				`
+                <div class="bg-white p-4 border-brutal shadow-brutal rounded-lg my-3 w-fit ml-auto">
+                    <p class="text-gray-700 text-end">${userMessage}</p>
                 </div>
-            `);
+            `
+			);
 
-            document.querySelector(".chat-window .chat").insertAdjacentHTML("beforeend",`
-                <div class="loader"></div>
-            `);
+			document.querySelector('.chat-window .chat').insertAdjacentHTML(
+				'beforeend',
+				`
+                <div class="loader bg-white p-4 border-brutal shadow-brutal rounded-lg my-3 inline-block"></div>
+            `
+			);
 
-            const chat = model.startChat(messages);
+			const chat = model.startChat(messages);
 
-            let result = await chat.sendMessageStream(userMessage);
-            
-            document.querySelector(".chat-window .chat").insertAdjacentHTML("beforeend",`
-                <div class="model">
-                    <p></p>
+			let result = await chat.sendMessageStream(userMessage);
+
+			document.querySelector('.chat-window .chat').insertAdjacentHTML(
+				'beforeend',
+				`
+                <div class="model bg-white p-4 border-brutal shadow-brutal rounded-lg my-3 inline-block">
+                    <p class="text-start"></p>
                 </div>
-            `);
-            
-            let modelMessages = '';
+            `
+			);
 
-            for await (const chunk of result.stream) {
-              const chunkText = chunk.text();
-              modelMessages = document.querySelectorAll(".chat-window .chat div.model");
-              modelMessages[modelMessages.length - 1].querySelector("p").insertAdjacentHTML("beforeend",`
+			let modelMessages = '';
+
+			for await (const chunk of result.stream) {
+				const chunkText = chunk.text();
+				modelMessages = document.querySelectorAll(
+					'.chat-window .chat div.model'
+				);
+				modelMessages[modelMessages.length - 1]
+					.querySelector('p')
+					.insertAdjacentHTML(
+						'beforeend',
+						`
                 ${chunkText}
-            `);
-            }
+            `
+					);
+			}
 
-            messages.history.push({
-                role: "user",
-                parts: [{ text: userMessage }],
-            });
+			messages.history.push({
+				role: 'user',
+				parts: [{ text: userMessage }],
+			});
 
-            messages.history.push({
-                role: "model",
-                parts: [{ text: modelMessages[modelMessages.length - 1].querySelector("p").innerHTML }],
-            });
-
-        } catch (error) {
-            document.querySelector(".chat-window .chat").insertAdjacentHTML("beforeend",`
-                <div class="error">
+			messages.history.push({
+				role: 'model',
+				parts: [
+					{
+						text: modelMessages[modelMessages.length - 1].querySelector('p')
+							.innerHTML,
+					},
+				],
+			});
+		} catch (error) {
+			document.querySelector('.chat-window .chat').insertAdjacentHTML(
+				'beforeend',
+				`
+                <div class="error bg-white p-4 border-brutal shadow-brutal rounded-lg">
                     <p>The message could not be sent. Please try again.</p>
                 </div>
-            `);
-        }
+            `
+			);
+		}
 
-        document.querySelector(".chat-window .chat .loader").remove();
-        
-    }
+		document.querySelector('.chat-window .chat .loader').remove();
+	}
 }
 
-document.querySelector(".chat-window .input-area button")
-.addEventListener("click", ()=>sendMessage());
+document
+	.querySelector('.chat-window .input-area button')
+	.addEventListener('click', () => sendMessage());
 
-document.querySelector(".chat-button")
-.addEventListener("click", ()=>{
-    document.querySelector("body").classList.add("chat-open");
+document.querySelector('.chat-button').addEventListener('click', () => {
+	document.querySelector('body').classList.add('chat-open');
 });
 
-document.querySelector(".chat-window button.close")
-.addEventListener("click", ()=>{
-    document.querySelector("body").classList.remove("chat-open");
-});
-
+document
+	.querySelector('.chat-window button.close')
+	.addEventListener('click', () => {
+		document.querySelector('body').classList.remove('chat-open');
+	});
