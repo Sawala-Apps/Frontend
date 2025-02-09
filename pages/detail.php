@@ -73,7 +73,7 @@
     document.getElementById("chatForm").addEventListener("submit", function(event) {
         event.preventDefault();
         const comment = document.getElementById("message").value;
-
+        
         axios.post("https://backend-production-c986.up.railway.app/feed/" + postid + "/comment",{ content: comment }, 
         {
              headers: {
@@ -87,7 +87,9 @@
                 positionClass: "toast-top-right",
                 timeOut: 1000
             });
+            setTimeout(() => {
             window.location.reload();
+                    }, 2000);
             console.log(response.data);
         })
         .catch(function (response) {
@@ -127,7 +129,7 @@
     })
     .finally(function () {
                 loadingOverlay.style.display = "none"; // Sembunyikan loading setelah selesai
-    });
+});
 
     function createCommentElement(comment) {
         const commentContainer = document.createElement('div');
