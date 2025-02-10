@@ -71,7 +71,7 @@
       <a href="feedinteraktif.php" class="block w-full">
         <div class="bg-[#D7F2EE] shadow-join border-brutal rounded-xl p-6 flex flex-col items-center">
           <div class="bg-white rounded-full p-4 mb-4">
-            <img src="https://placehold.co/400" alt="Feed Icon" class="w-12 h-12">
+            <img src="assets/images/feedinteraktif.png" alt="Feed Icon" class="w-12 h-12">
           </div>
           <h3 class="text-2xl font-semibold text-gray-900 mb-2">Feed Interaktif</h3>
           <p class="text-gray-700 text-center">Fitur feed interaktif untuk berbagi pemikiran, artikel, dan diskusi dengan komunitas yang aktif.</p>
@@ -81,7 +81,7 @@
       <a href="sharestory.php">
         <div class="bg-[#FFE8D2] shadow-join border-brutal rounded-xl p-6 flex flex-col items-center">
           <div class="bg-white rounded-full p-4 mb-4">
-            <img src="https://placehold.co/400" alt="Story Icon" class="w-12 h-12">
+            <img src="assets/images/sharestory.png" alt="Story Icon" class="w-12 h-12">
           </div>
           <h3 class="text-2xl font-semibold text-gray-900 mb-2">Bagikan Ceritamu</h3>
           <p class="text-gray-700 text-center">Berbagi cerita pribadi dan pengalaman dalam komunitas untuk memperkaya diskusi.</p>
@@ -91,7 +91,7 @@
       <a href="chatbot.php" class="block w-full">
         <div class="bg-[#FFE8A3] shadow-join border-brutal rounded-xl p-6 flex flex-col items-center">
           <div class="bg-white rounded-full p-4 mb-4">
-            <img src="https://placehold.co/400" alt="Chatbot Icon" class="w-12 h-12">
+            <img src="assets/images/chatbot-ai.png" alt="Chatbot Icon" class="w-12 h-12">
           </div>
           <h3 class="text-2xl font-semibold text-gray-900 mb-2">Chat Bot</h3>
           <p class="text-gray-700 text-center">Fitur chatbot untuk memberikan bantuan seputar pertanyaan umum dan navigasi di platform Sawala.</p>

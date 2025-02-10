@@ -49,7 +49,7 @@
                             <div class="flex flex-col space-y-4">
                                 <div>
                                     <label for="email" class="text-gray-700 font-semibold">Email/Username</label>
-                                    <input type="email" id="email" name="email" class="bg-white w-full p-3 border-brutal rounded-lg shadow-brutal focus:ring-2 focus:ring-blue-400 focus:outline-none" placeholder="Enter your email/username" required>
+                                    <input type="username" id="email" name="email" class="bg-white w-full p-3 border-brutal rounded-lg shadow-brutal focus:ring-2 focus:ring-blue-400 focus:outline-none" placeholder="Enter your email/username" required>
                                 </div>
                                 <div>
                                     <label for="password" class="text-gray-700 font-semibold">Password</label>

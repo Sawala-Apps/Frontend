@@ -61,6 +61,7 @@
                                 <div>
                                     <label for="password" class="text-gray-700 font-semibold">Password</label>
                                     <input type="password" id="password" name="password" class="bg-white w-full p-3 border-brutal rounded-lg shadow-brutal focus:ring-2 focus:ring-blue-400 focus:outline-none" placeholder="Enter your password" required>
+                                    <small id="passwordHelp" class="text-red-500">Password harus 6-12 karakter, mengandung 1 huruf kapital, dan 1 simbol.</small>
                                 </div>
                                 <div>
                                     <label for="confirmPassword" class="text-gray-700 font-semibold">Confirm Password</label>
@@ -132,6 +133,26 @@
                 // Sembunyikan loading
                 document.getElementById("loadingOverlay").style.display = "none";
             });
+        });
+
+        function validatePassword(password) {
+            const minLength = 6;
+            const maxLength = 12;
+            const hasUpperCase = /[A-Z]/.test(password);
+            const hasSymbol = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+            const isValidLength = password.length >= minLength && password.length <= maxLength;
+            return hasUpperCase && hasSymbol && isValidLength;
+        }
+
+        document.getElementById("password").addEventListener("input", function() {
+            const password = document.getElementById("password").value;
+            const passwordHelp = document.getElementById("passwordHelp");
+
+            if (validatePassword(password)) {
+                passwordHelp.classList.add("hidden");
+            } else {
+                passwordHelp.classList.remove("hidden");
+            }
         });
     </script>
 </body>
