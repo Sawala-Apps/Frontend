@@ -13,7 +13,7 @@
 </head>
 <body class="bg-white bg-[linear-gradient(to_right,#80808033_1px,transparent_1px),linear-gradient(to_bottom,#80808033_1px,transparent_1px)] bg-[size:70px_70px] font-sans items-center flex flex-col">
     <div class="w-[62%] flex flex-col items-center">
-        <main class="container mx-auto flex flex-col items-center">
+        <main class="container mx-auto flex flex-col items-center max-md:w-[85%]">
             <?php include '../includes/header.php'; ?>
             <div class="flex flex-col space-y-4 w-[80%] max-lg:w-[100%] border-brutal shadow-brutal rounded-lg p-4 bg-[#DFE5F2]">
                 <div class="flex flex-row items-center justify-between w-full mb-8">

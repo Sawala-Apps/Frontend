@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Mega:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body class="bg-white bg-[linear-gradient(to_right,#80808033_1px,transparent_1px),linear-gradient(to_bottom,#80808033_1px,transparent_1px)] bg-[size:70px_70px] font-sans items-center flex flex-col">
-    <div class="w-[62%] flex flex-col items-center">
+    <div class="w-[62%] max-md:w-[85%] flex flex-col items-center">
     <main class="container mx-auto flex flex-col items-center">
     <?php include '../includes/header.php'; ?>
     <?php include '../partials/create-feed.php';  ?>

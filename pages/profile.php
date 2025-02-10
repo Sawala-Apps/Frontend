@@ -36,7 +36,7 @@
 </head>
 <body class="bg-white bg-[linear-gradient(to_right,#80808033_1px,transparent_1px),linear-gradient(to_bottom,#80808033_1px,transparent_1px)] bg-[size:70px_70px] font-sans items-center flex flex-col">
     <div id="loadingOverlay">Loading...</div>
-    <div class="w-[62%] flex flex-col items-center">
+    <div class="w-[62%] flex flex-col items-center max-md:w-[85%] ">
         <main class="container mx-auto flex flex-col items-center">
             <?php include '../includes/header.php'; ?>
             <div class="flex flex-col space-y-4 w-[80%] max-lg:w-[100%] border-brutal shadow-brutal rounded-lg p-4 bg-[#DFE5F2]">
@@ -47,10 +47,12 @@
                         </div>
                         <div class="flex flex-col">
                         <div class="flex flex-row p-2 items-center justify-center">
-                        <span id="name" class="text-black text-2xl font-bold"></span>
-                        <span id="username" class="text-gray-800 text-xl ml-4"></span>
+                        <div class="flex flex-row max-md:flex-col">
+                            <span id="name" class="text-black text-2xl font-bold max-md:text-lg"></span>
+                            <span id="username" class="text-gray-800 text-xl ml-4 max-md:text-lg max-md:ml-0"></span>
                         </div>
-                        <button id="settingsButton" class="px-4 py-2 bg-[#88AAEE] hover:bg-blue-600 text-black rounded-lg shadow-brutal btn-brutal border-brutal">Settings</button>
+                        </div>
+                        <button id="settingsButton" class="px-4 py-2 bg-[#88AAEE] hover:bg-blue-600 text-black rounded-lg shadow-brutal btn-brutal border-brutal max-md:w-[15vh]">Settings</button>
                         </div>
                     </div>
                 </div>

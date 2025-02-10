@@ -39,7 +39,7 @@
 </head>
 <body class="bg-white bg-[linear-gradient(to_right,#80808033_1px,transparent_1px),linear-gradient(to_bottom,#80808033_1px,transparent_1px)] bg-[size:70px_70px] font-sans items-center flex flex-col">
 <div id="loadingOverlay">Loading...</div>    
-<div class="w-[62%] flex flex-col items-center">
+<div class="w-[62%] max-md:w-[85%] flex flex-col items-center">
     <main class="container mx-auto flex flex-col items-center">
             <?php include '../includes/header.php'; ?>
             <div id="feed-container" class="w-full space-y-4"></div>
@@ -102,7 +102,7 @@
             console.error(response.error);
         })
         .finally(function () {
-                loadingOverlay.style.display = "none"; // Sembunyikan loading setelah selesai
+                loadingOverlay.style.display = "none"; 
         });
 
     })
@@ -134,18 +134,18 @@
     function createCommentElement(comment) {
         const commentContainer = document.createElement('div');
         commentContainer.innerHTML = `
-        <div class="comment flex items-start space-x-4 mb-4 bg-[#E3E0F3] rounded-lg p-3 border-brutal shadow-brutal">
-        <img src="${comment.profile_picture}" alt="User Avatar" class="w-10 h-10 rounded-md border-brutal shadow-brutal">
-            <div class="comment-content flex-1">
-                <div class="flex flex-column items-center">
+            <div class="comment flex items-start space-x-4 mb-4 bg-[#E3E0F3] rounded-lg p-3 border-brutal shadow-brutal">
+            <img src="${comment.profile_picture}" alt="User Avatar" class="w-10 h-10 rounded-md border-brutal shadow-brutal">
+            <div class="comment-content flex-1 flex flex-col">
+                <div class="flex flex-col sm:flex-row sm:items-center">
                     <h5 class="font-bold">${comment.fullname}</h5>
                     <p>@${comment.uid}</p>
-                    <p class="ml-auto text-sm">${new Date(comment.created_at).toLocaleString()}</p>
+                    <p class="ml-auto text-sm max-sm:invisible">${new Date(comment.created_at).toLocaleString()}</p>
                 </div>
-
-                <p class="text-gray-800">${comment.content}<p>
+                <p class="text-gray-800 max-md:text-sm">${comment.content}</p>
             </div>
-        </div>
+        </div> 
+
         
         `;
         return commentContainer;
@@ -156,36 +156,39 @@
     const postContainer = document.createElement('div');
     postContainer.innerHTML = `
     <div class="w-[80%] max-lg:w-[100%] mx-auto mb-6 p-6 bg-[#DFE5F2] border-brutal shadow-brutal rounded-lg">
-        <div class="flex items-center justify-between">
-            <div class="flex items-center space-x-4">
-                <img src="${post.profile_picture}" alt="User Avatar" class="w-10 h-10 rounded-md border-brutal shadow-brutal">
-                <div>
-                    <div class="flex items-center space-x-2">
-                        <h3 class="font-bold text-gray-900">${post.fullname}</h3>
-                        <p class="text-sm">@${post.uid}</p>
-                        <p class="text-sm text-gray-600">${new Date(post.created_at).toLocaleString()}</p>
+    <div class="flex items-center justify-between gap-2 flex-wrap">
+        <div class="flex items-center space-x-4 min-w-0">
+            <img src="${post.profile_picture}" alt="User Avatar" class="w-10 h-10 rounded-md border-brutal shadow-brutal flex-shrink-0">
+            <div class="min-w-0">
+                <div class="flex items-center space-x-2 flex-wrap">
+                    <div class="flex flex-row items-center justify-center max-md:flex-col">
+                        <h3 class="font-bold text-gray-900 truncate">${post.fullname}</h3>
+                        <p class="text-sm truncate">@${post.uid}</p>
                     </div>
+                    <p class="text-sm text-gray-600 max-md:hidden">${new Date(post.created_at).toLocaleString()}</p>
                 </div>
             </div>
-            
-            <button class="settingsButton px-4 py-2 bg-[#88AAEE] hover:bg-blue-600 text-black rounded-lg shadow-brutal btn-brutal border-brutal">
-                ...
-            </button>
         </div>
+<button class="settingsButton px-2 py-1 text-sm bg-[#88AAEE] hover:bg-blue-600 text-black rounded-md shadow-brutal border-brutal">
+    ...
+</button>
 
-        <div class="mt-4">
-            <p class="text-gray-800 text-lg">${post.content_text}</p>
-        </div>
+    </div>
 
-        <div class="mt-4 flex flex-col items-center">
-            <img src="${post.content_image}" alt="Post Image" class="w-[90vh] border-brutal rounded-lg">
-            <div class="w-[100%]">
-                <div class="flex flex-row mt-2">
-                    <p class="ml-10 text-gray-800 text-sm">${post.comment_count} comments</p>
-                </div>
+    <div class="mt-4">
+        <p class="text-gray-800 text-lg">${post.content_text}</p>
+    </div>
+
+    <div class="mt-4 flex flex-col items-center">
+        <img src="${post.content_image}" alt="Post Image" class="w-[90vh] max-w-full border-brutal rounded-lg">
+        <div class="w-full">
+            <div class="flex flex-row mt-2">
+                <p class="ml-10 text-gray-800 text-sm">${post.comment_count} comments</p>
             </div>
         </div>
     </div>
+</div>
+
     `;
 
     setTimeout(() => {
